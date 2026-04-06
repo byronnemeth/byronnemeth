@@ -34,7 +34,7 @@ export default function Discography() {
           position: relative;
           background-image: url('/8bn.jpg');
           background-size: cover;
-          background-position: center 40%;
+          background-position: center top;
           background-repeat: no-repeat;
         }
         .disc-hero-overlay {
@@ -52,7 +52,7 @@ export default function Discography() {
         .disc-stream-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
         @media (max-width: 768px) {
-          .disc-hero { min-height: 60vh; background-position: center 40%; }
+          .disc-hero { min-height: 60vh; background-position: center top; }
           .disc-hero-inner { padding: 100px 20px 80px; }
           .disc-container { padding: 0 20px; }
           .disc-section { padding-top: 60px; padding-bottom: 80px; }
