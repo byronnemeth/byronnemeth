@@ -25,8 +25,24 @@ export default function Discography() {
     <main style={{ backgroundColor: "#080808", color: "#ffffff", minHeight: "100vh", fontFamily: font }}>
 
       <style>{`
-        .disc-hero { min-height: 85vh; padding-top: 200px; padding-bottom: 100px; text-align: center; position: relative; display: flex; align-items: center; justify-content: center; }
-        .disc-hero-inner { position: relative; z-index: 10; max-width: 900px; margin: 0 auto; padding: 0 48px; }
+        .disc-hero {
+          min-height: 85vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          position: relative;
+          background-image: url('/8bn.jpg');
+          background-size: cover;
+          background-position: center 40%;
+          background-repeat: no-repeat;
+        }
+        .disc-hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, #080808 0%, rgba(8,8,8,0.55) 50%, rgba(0,0,0,0.25) 100%);
+        }
+        .disc-hero-inner { position: relative; z-index: 10; max-width: 900px; margin: 0 auto; padding: 120px 48px 100px; }
         .disc-hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         .disc-container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
         .disc-section { padding-top: 100px; padding-bottom: 160px; }
@@ -36,8 +52,8 @@ export default function Discography() {
         .disc-stream-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
         @media (max-width: 768px) {
-          .disc-hero { padding-top: 120px; padding-bottom: 60px; }
-          .disc-hero-inner { padding: 0 20px; }
+          .disc-hero { min-height: 60vh; background-position: center 40%; }
+          .disc-hero-inner { padding: 100px 20px 80px; }
           .disc-container { padding: 0 20px; }
           .disc-section { padding-top: 60px; padding-bottom: 80px; }
           .disc-grid { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
@@ -54,14 +70,10 @@ export default function Discography() {
 
       <Nav activePage="Discography" />
 
-      {/* HERO */}
-{/* HERO */}
-<section className="disc-hero" style={{ position: "relative", overflow: "hidden" }}>
-  <div style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden" }}>
-    <img src="/8bn.jpg" alt="Discography" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center", position: "absolute", top: "0", left: "0", transform: "translateY(15%)" }} />
-    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #080808 0%, rgba(8,8,8,0.6) 50%, rgba(0,0,0,0.3) 100%)" }} />
-  </div>
-  <div className="disc-hero-inner" style={{ position: "relative", zIndex: 10 }}>
+      {/* HERO — background-image approach for reliable positioning */}
+      <section className="disc-hero">
+        <div className="disc-hero-overlay" />
+        <div className="disc-hero-inner">
           <p style={{ fontSize: "13px", letterSpacing: "0.6em", textTransform: "uppercase", color: "rgba(245,158,11,0.85)", marginBottom: "28px", fontFamily: font, fontWeight: 400 }}>Full Catalog</p>
           <h1 style={{ fontSize: "clamp(48px, 9vw, 110px)", fontWeight: 200, letterSpacing: "-0.02em", lineHeight: 0.9, marginBottom: "32px", fontFamily: font }}>
             Disco<strong style={{ fontWeight: 700 }}>graphy</strong>
@@ -90,7 +102,8 @@ export default function Discography() {
           <div className="disc-grid">
             {albums.map((album, i) => (
               <div key={i} style={{ display: "flex", flexDirection: "column" }}>
-                <a href={album.spotify} target="_blank" rel="noopener noreferrer" style={{ display: "block", position: "relative", overflow: "hidden" }}
+                <a href={album.spotify} target="_blank" rel="noopener noreferrer"
+                  style={{ display: "block", position: "relative", overflow: "hidden" }}
                   onMouseEnter={(e) => { e.currentTarget.querySelector("img").style.transform = "scale(1.04)"; e.currentTarget.querySelector(".overlay").style.opacity = "1"; }}
                   onMouseLeave={(e) => { e.currentTarget.querySelector("img").style.transform = "scale(1)"; e.currentTarget.querySelector(".overlay").style.opacity = "0"; }}
                 >
