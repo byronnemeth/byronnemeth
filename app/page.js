@@ -20,15 +20,50 @@ export default function Home() {
   ];
 
   const font = "var(--font-inter), sans-serif";
-  const container = { maxWidth: "1200px", margin: "0 auto", padding: "0 48px" };
-  const section = { paddingTop: "160px", paddingBottom: "160px" };
-  const divider = { maxWidth: "1200px", margin: "0 auto", padding: "0 48px" };
-  const label = { fontSize: "13px", letterSpacing: "0.5em", textTransform: "uppercase", color: "#f59e0b", fontFamily: font, fontWeight: 500 };
-  const sectionHeading = { fontSize: "clamp(48px, 5vw, 72px)", fontWeight: 300, lineHeight: 1.1, fontFamily: font, marginBottom: "32px" };
+  const sectionHeading = { fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 300, lineHeight: 1.1, fontFamily: font, marginBottom: "32px" };
   const bodyText = { color: "rgba(255,255,255,0.55)", lineHeight: 1.85, fontSize: "19px", fontWeight: 300, fontFamily: font };
+  const label = { fontSize: "13px", letterSpacing: "0.5em", textTransform: "uppercase", color: "#f59e0b", fontFamily: font, fontWeight: 500 };
 
   return (
     <main style={{ backgroundColor: "#080808", color: "#ffffff", minHeight: "100vh", fontFamily: font }}>
+
+      <style>{`
+        .home-section { padding-top: 160px; padding-bottom: 160px; }
+        .home-container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+        .home-divider { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+        .home-hero-content { padding: 200px 48px 180px; }
+        .home-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
+        .home-book-col { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; margin-bottom: 56px; }
+        .home-book-img { display: flex; justify-content: center; }
+        .home-book-img img { width: 300px; }
+        .home-contact-inner { max-width: 680px; margin: 0 auto; padding: 0 48px; }
+        .home-music-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 80px; flex-wrap: wrap; gap: 24px; }
+        .home-video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
+        .home-hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .home-hero-btn-primary { background-color: #d97706; color: #000; font-size: 14px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 20px 56px; text-decoration: none; font-family: var(--font-inter), sans-serif; }
+        .home-hero-btn-secondary { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; padding: 20px 56px; text-decoration: none; font-family: var(--font-inter), sans-serif; }
+        .home-playlist-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+        .home-lesson-boxes { display: flex; flex-direction: column; gap: 20px; }
+        .home-contact-links { display: flex; gap: 40px; margin-bottom: 52px; flex-wrap: wrap; }
+
+        @media (max-width: 768px) {
+          .home-section { padding-top: 80px; padding-bottom: 80px; }
+          .home-container { padding: 0 20px; }
+          .home-divider { padding: 0 20px; }
+          .home-hero-content { padding: 140px 20px 100px; }
+          .home-two-col { grid-template-columns: 1fr; gap: 40px; }
+          .home-book-col { grid-template-columns: 1fr; gap: 40px; margin-bottom: 32px; }
+          .home-book-img { order: -1; }
+          .home-book-img img { width: 220px; }
+          .home-contact-inner { padding: 0 20px; }
+          .home-music-header { flex-direction: column; align-items: flex-start; margin-bottom: 40px; }
+          .home-video-grid { grid-template-columns: 1fr; gap: 24px; }
+          .home-hero-btn-primary { padding: 16px 32px; font-size: 12px; }
+          .home-hero-btn-secondary { padding: 16px 32px; font-size: 12px; }
+          .home-playlist-btns { flex-direction: column; }
+          .home-contact-links { flex-direction: column; gap: 16px; }
+        }
+      `}</style>
 
       <Nav activePage="Home" />
 
@@ -39,19 +74,19 @@ export default function Home() {
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #080808 0%, rgba(8,8,8,0.5) 50%, rgba(0,0,0,0.2) 100%)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(8,8,8,0.4), transparent 40%, transparent 60%, rgba(8,8,8,0.4))" }} />
         </div>
-        <div style={{ position: "relative", zIndex: 10, textAlign: "center", padding: "200px 48px 180px", width: "100%", maxWidth: "960px", margin: "0 auto" }}>
+        <div className="home-hero-content" style={{ position: "relative", zIndex: 10, textAlign: "center", width: "100%", maxWidth: "960px", margin: "0 auto" }}>
           <p style={{ fontSize: "13px", letterSpacing: "0.6em", textTransform: "uppercase", color: "rgba(245,158,11,0.85)", marginBottom: "32px", fontFamily: font, fontWeight: 400 }}>Las Vegas, Nevada</p>
-          <h1 style={{ fontSize: "clamp(80px, 13vw, 170px)", fontWeight: 200, letterSpacing: "-0.02em", lineHeight: 0.9, marginBottom: "40px", fontFamily: font }}>
+          <h1 style={{ fontSize: "clamp(64px, 13vw, 170px)", fontWeight: 200, letterSpacing: "-0.02em", lineHeight: 0.9, marginBottom: "40px", fontFamily: font }}>
             Byron<br /><strong style={{ fontWeight: 700 }}>Nemeth</strong>
           </h1>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "24px", marginBottom: "56px" }}>
-            <div style={{ height: "1px", width: "80px", backgroundColor: "rgba(217,119,6,0.5)" }} />
-            <p style={{ fontSize: "14px", letterSpacing: "0.4em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", whiteSpace: "nowrap", fontFamily: font, fontWeight: 300 }}>Guitarist &nbsp;·&nbsp; Author &nbsp;·&nbsp; AI Entrepreneur</p>
-            <div style={{ height: "1px", width: "80px", backgroundColor: "rgba(217,119,6,0.5)" }} />
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "24px", marginBottom: "48px" }}>
+            <div style={{ height: "1px", width: "40px", backgroundColor: "rgba(217,119,6,0.5)" }} />
+            <p style={{ fontSize: "clamp(10px, 3vw, 14px)", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", whiteSpace: "nowrap", fontFamily: font, fontWeight: 300 }}>Guitarist &nbsp;·&nbsp; Author &nbsp;·&nbsp; AI Entrepreneur</p>
+            <div style={{ height: "1px", width: "40px", backgroundColor: "rgba(217,119,6,0.5)" }} />
           </div>
-          <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="#music" style={{ backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Watch &amp; Listen</a>
-            <a href="#contact" style={{ border: "1px solid rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.8)", fontSize: "14px", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Book a Lesson</a>
+          <div className="home-hero-buttons">
+            <a href="#music" className="home-hero-btn-primary">Watch &amp; Listen</a>
+            <a href="#contact" className="home-hero-btn-secondary">Book a Lesson</a>
           </div>
         </div>
         <div style={{ position: "absolute", bottom: "40px", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", gap: "12px", color: "rgba(255,255,255,0.2)" }}>
@@ -61,62 +96,48 @@ export default function Home() {
       </section>
 
       {/* MUSIC */}
-      <section id="music" style={section}>
-        <div style={container}>
+      <section id="music" className="home-section">
+        <div className="home-container">
           <div style={{ display: "flex", alignItems: "center", gap: "24px", marginBottom: "20px" }}>
             <div style={{ height: "1px", width: "56px", backgroundColor: "#d97706" }} />
             <p style={label}>Discography</p>
           </div>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "80px", flexWrap: "wrap", gap: "24px" }}>
+          <div className="home-music-header">
             <h2 style={{ ...sectionHeading, marginBottom: 0 }}>Music that <strong style={{ fontWeight: 700 }}>moves</strong> people</h2>
-            <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-              <a
-                href="https://youtube.com/playlist?list=OLAK5uy_ksa_i_hXH5O91GihOxdNX75XhLX_AnsE4&si=Y31RgtiQg_3ywUew"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", padding: "12px 24px", textDecoration: "none", fontFamily: font, fontWeight: 400 }}
-              >
-                Greatest Hits Playlist ↗
-              </a>
-              <a
-                href="https://open.spotify.com/artist/72Be17THrKoSxQtWlJFvtV?si=oZvlieAgSj-nwhT9qFZa6g"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", padding: "12px 24px", textDecoration: "none", fontFamily: font, fontWeight: 400 }}
-              >
-                Spotify ↗
-              </a>
+            <div className="home-playlist-btns">
+              <a href="https://youtube.com/playlist?list=OLAK5uy_ksa_i_hXH5O91GihOxdNX75XhLX_AnsE4&si=Y31RgtiQg_3ywUew" target="_blank" rel="noopener noreferrer" style={{ fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", padding: "12px 24px", textDecoration: "none", fontFamily: font, fontWeight: 400 }}>Greatest Hits ↗</a>
+              <a href="https://open.spotify.com/artist/72Be17THrKoSxQtWlJFvtV?si=oZvlieAgSj-nwhT9qFZa6g" target="_blank" rel="noopener noreferrer" style={{ fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", padding: "12px 24px", textDecoration: "none", fontFamily: font, fontWeight: 400 }}>Spotify ↗</a>
             </div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "32px" }}>
+          <div className="home-video-grid">
             {videos.map((video) => (
               <div key={video.id}>
                 <div style={{ position: "relative", paddingTop: "56.25%", overflow: "hidden", backgroundColor: "rgba(255,255,255,0.04)" }}>
                   <iframe src={`https://www.youtube.com/embed/${video.id}`} title={video.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }} />
                 </div>
-                <p style={{ marginTop: "16px", fontSize: "12px", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", fontFamily: font, fontWeight: 400 }}>{video.title}</p>
+                <p style={{ marginTop: "12px", fontSize: "11px", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", fontFamily: font, fontWeight: 400 }}>{video.title}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <div style={divider}><div style={{ height: "1px", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)" }} /></div>
+      <div className="home-divider"><div style={{ height: "1px", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)" }} /></div>
 
       {/* LESSONS */}
-      <section id="lessons" style={section}>
-        <div style={container}>
+      <section id="lessons" className="home-section">
+        <div className="home-container">
           <div style={{ display: "flex", alignItems: "center", gap: "24px", marginBottom: "20px" }}>
             <div style={{ height: "1px", width: "56px", backgroundColor: "#d97706" }} />
             <p style={label}>Guitar Lessons</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "96px", alignItems: "start" }}>
+          <div className="home-two-col">
             <div>
               <h2 style={sectionHeading}>Learn from<br />a <strong style={{ fontWeight: 700 }}>pro</strong></h2>
-              <p style={{ ...bodyText, marginBottom: "48px" }}>In-home guitar lessons across Las Vegas. Whether you are picking up the guitar for the first time or refining your craft at an advanced level — I meet you exactly where you are.</p>
+              <p style={{ ...bodyText, marginBottom: "40px" }}>In-home guitar lessons across Las Vegas. Whether you are picking up the guitar for the first time or refining your craft at an advanced level — I meet you exactly where you are.</p>
               <a href="#contact" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Book Your First Lesson</a>
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <div className="home-lesson-boxes">
               {[
                 { level: "Beginner", desc: "Foundations, technique, and building great habits from day one" },
                 { level: "Intermediate", desc: "Expand your vocabulary, theory, and personal playing style" },
@@ -132,25 +153,25 @@ export default function Home() {
         </div>
       </section>
 
-      <div style={divider}><div style={{ height: "1px", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)" }} /></div>
+      <div className="home-divider"><div style={{ height: "1px", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)" }} /></div>
 
       {/* BOOK */}
-      <section id="book" style={section}>
-        <div style={container}>
+      <section id="book" className="home-section">
+        <div className="home-container">
           <div style={{ display: "flex", alignItems: "center", gap: "24px", marginBottom: "20px" }}>
             <div style={{ height: "1px", width: "56px", backgroundColor: "#d97706" }} />
             <p style={label}>Published Work</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "96px", alignItems: "center", marginBottom: "56px" }}>
+          <div className="home-book-col">
             <div>
               <h2 style={sectionHeading}>The Zen of<br /><strong style={{ fontWeight: 700 }}>Guitar</strong></h2>
-              <p style={{ ...bodyText, fontSize: "21px", marginBottom: "20px" }}>Understanding Guitar Through Direct Intuition — Volume Three</p>
-              <p style={{ ...bodyText, color: "rgba(255,255,255,0.4)", marginBottom: "52px" }}>A transformative guide that goes beyond technique to explore the mindset, philosophy, and artistry that separates good players from truly great ones.</p>
+              <p style={{ ...bodyText, fontSize: "19px", marginBottom: "20px" }}>Understanding Guitar Through Direct Intuition — Volume Three</p>
+              <p style={{ ...bodyText, color: "rgba(255,255,255,0.4)", marginBottom: "48px" }}>A transformative guide that goes beyond technique to explore the mindset, philosophy, and artistry that separates good players from truly great ones.</p>
               <a href="https://www.amazon.com/dp/B0DYRT81GQ" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Get It on Amazon</a>
             </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <div className="home-book-img">
               <a href="https://www.amazon.com/dp/B0DYRT81GQ" target="_blank" rel="noopener noreferrer" style={{ display: "block" }}>
-                <img src="/zen.jpg" alt="The Zen of Guitar by Byron Nemeth" style={{ width: "300px", borderRadius: "4px", boxShadow: "0 40px 80px rgba(0,0,0,0.6)", display: "block" }} />
+                <img src="/zen.jpg" alt="The Zen of Guitar by Byron Nemeth" style={{ borderRadius: "4px", boxShadow: "0 40px 80px rgba(0,0,0,0.6)", display: "block" }} />
               </a>
             </div>
           </div>
@@ -160,28 +181,21 @@ export default function Home() {
         </div>
       </section>
 
-      <div style={divider}><div style={{ height: "1px", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)" }} /></div>
+      <div className="home-divider"><div style={{ height: "1px", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)" }} /></div>
 
       {/* CONTACT */}
-      <section id="contact" style={section}>
-        <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 48px" }}>
+      <section id="contact" className="home-section">
+        <div className="home-contact-inner">
           <div style={{ display: "flex", alignItems: "center", gap: "24px", marginBottom: "20px" }}>
             <div style={{ height: "1px", width: "56px", backgroundColor: "#d97706" }} />
             <p style={label}>Get In Touch</p>
           </div>
           <h2 style={{ ...sectionHeading, marginBottom: "20px" }}>Let us <strong style={{ fontWeight: 700 }}>connect</strong></h2>
           <p style={{ color: "rgba(255,255,255,0.4)", fontWeight: 300, marginBottom: "16px", fontSize: "19px", fontFamily: font }}>Lessons &nbsp;·&nbsp; Touring &nbsp;·&nbsp; AI Services &nbsp;·&nbsp; Collaborations</p>
-
-          {/* Direct contact info */}
-          <div style={{ display: "flex", gap: "40px", marginBottom: "52px", flexWrap: "wrap" }}>
-            <a href="mailto:byron@byronnemeth.com" style={{ fontSize: "16px", color: "rgba(255,255,255,0.55)", textDecoration: "none", fontFamily: font, fontWeight: 300 }}>
-              byron@byronnemeth.com
-            </a>
-            <a href="tel:4802095309" style={{ fontSize: "16px", color: "rgba(255,255,255,0.55)", textDecoration: "none", fontFamily: font, fontWeight: 300 }}>
-              480.209.5309
-            </a>
+          <div className="home-contact-links">
+            <a href="mailto:byron@byronnemeth.com" style={{ fontSize: "16px", color: "rgba(255,255,255,0.55)", textDecoration: "none", fontFamily: font, fontWeight: 300 }}>byron@byronnemeth.com</a>
+            <a href="tel:4802095309" style={{ fontSize: "16px", color: "rgba(255,255,255,0.55)", textDecoration: "none", fontFamily: font, fontWeight: 300 }}>480.209.5309</a>
           </div>
-
           <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             <input type="text" placeholder="Your Name" style={{ backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "22px 24px", color: "#fff", fontSize: "16px", fontWeight: 300, outline: "none", width: "100%", boxSizing: "border-box", fontFamily: font }} />
             <input type="email" placeholder="Your Email" style={{ backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "22px 24px", color: "#fff", fontSize: "16px", fontWeight: 300, outline: "none", width: "100%", boxSizing: "border-box", fontFamily: font }} />
