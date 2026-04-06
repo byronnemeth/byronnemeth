@@ -55,9 +55,13 @@ export default function Discography() {
       <Nav activePage="Discography" />
 
       {/* HERO */}
-      <section className="disc-hero">
-        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "600px", height: "600px", background: "radial-gradient(circle, rgba(217,119,6,0.05) 0%, transparent 70%)", pointerEvents: "none" }} />
-        <div className="disc-hero-inner">
+{/* HERO */}
+<section className="disc-hero" style={{ position: "relative", overflow: "hidden" }}>
+  <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+    <img src="/8bn.jpg" alt="Discography" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }} />
+    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #080808 0%, rgba(8,8,8,0.6) 50%, rgba(0,0,0,0.3) 100%)" }} />
+  </div>
+  <div className="disc-hero-inner" style={{ position: "relative", zIndex: 10 }}>
           <p style={{ fontSize: "13px", letterSpacing: "0.6em", textTransform: "uppercase", color: "rgba(245,158,11,0.85)", marginBottom: "28px", fontFamily: font, fontWeight: 400 }}>Full Catalog</p>
           <h1 style={{ fontSize: "clamp(48px, 9vw, 110px)", fontWeight: 200, letterSpacing: "-0.02em", lineHeight: 0.9, marginBottom: "32px", fontFamily: font }}>
             Disco<strong style={{ fontWeight: 700 }}>graphy</strong>
