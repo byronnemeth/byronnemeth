@@ -25,7 +25,7 @@ export default function Discography() {
     <main style={{ backgroundColor: "#080808", color: "#ffffff", minHeight: "100vh", fontFamily: font }}>
 
       <style>{`
-        .disc-hero { padding-top: 200px; padding-bottom: 100px; text-align: center; position: relative; }
+        .disc-hero { min-height: 85vh; padding-top: 200px; padding-bottom: 100px; text-align: center; position: relative; display: flex; align-items: center; justify-content: center; }
         .disc-hero-inner { position: relative; z-index: 10; max-width: 900px; margin: 0 auto; padding: 0 48px; }
         .disc-hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         .disc-container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
@@ -58,7 +58,7 @@ export default function Discography() {
 {/* HERO */}
 <section className="disc-hero" style={{ position: "relative", overflow: "hidden" }}>
   <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-    <img src="/8bn.jpg" alt="Discography" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }} />
+    <img src="/8bn.jpg" alt="Discography" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }} />
     <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #080808 0%, rgba(8,8,8,0.6) 50%, rgba(0,0,0,0.3) 100%)" }} />
   </div>
   <div className="disc-hero-inner" style={{ position: "relative", zIndex: 10 }}>
