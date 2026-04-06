@@ -2,8 +2,36 @@
 
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import { useState } from "react";
 
 export default function Home() {
+  const [formStatus, setFormStatus] = useState("idle"); // idle | sending | success | error
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus("sending");
+    try {
+      const res = await fetch("https://formspree.io/f/xykbozpb", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setFormStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
+  };
+
   const videos = [
     { title: "Hell To Pay", id: "KbzvGpEjM8k" },
     { title: "You Know It's True", id: "OYtIrl43NKc" },
@@ -23,6 +51,19 @@ export default function Home() {
   const sectionHeading = { fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 300, lineHeight: 1.1, fontFamily: font, marginBottom: "32px" };
   const bodyText = { color: "rgba(255,255,255,0.55)", lineHeight: 1.85, fontSize: "19px", fontWeight: 300, fontFamily: font };
   const label = { fontSize: "13px", letterSpacing: "0.5em", textTransform: "uppercase", color: "#f59e0b", fontFamily: font, fontWeight: 500 };
+
+  const inputStyle = {
+    backgroundColor: "rgba(255,255,255,0.03)",
+    border: "1px solid rgba(255,255,255,0.1)",
+    padding: "22px 24px",
+    color: "#fff",
+    fontSize: "16px",
+    fontWeight: 300,
+    outline: "none",
+    width: "100%",
+    boxSizing: "border-box",
+    fontFamily: font,
+  };
 
   return (
     <main style={{ backgroundColor: "#080808", color: "#ffffff", minHeight: "100vh", fontFamily: font }}>
@@ -170,7 +211,7 @@ export default function Home() {
               <a href="https://www.amazon.com/dp/B0DYRT81GQ" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Get It on Amazon</a>
             </div>
             <div className="home-book-img">
-              <a href="https://www.amazon.com/dp/B0DYRT81GQ" target="_blank" rel="noopener noreferrer" style={{ display: "block" }}>
+              <a href="https://www.amazon.com/dp/B0DYRT81GQ" target="_blank" rel="noopener noreferrer">
                 <img src="/zen.jpg" alt="The Zen of Guitar by Byron Nemeth" style={{ borderRadius: "4px", boxShadow: "0 40px 80px rgba(0,0,0,0.6)", display: "block" }} />
               </a>
             </div>
@@ -196,19 +237,92 @@ export default function Home() {
             <a href="mailto:byron@byronnemeth.com" style={{ fontSize: "16px", color: "rgba(255,255,255,0.55)", textDecoration: "none", fontFamily: font, fontWeight: 300 }}>byron@byronnemeth.com</a>
             <a href="tel:4802095309" style={{ fontSize: "16px", color: "rgba(255,255,255,0.55)", textDecoration: "none", fontFamily: font, fontWeight: 300 }}>480.209.5309</a>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-            <input type="text" placeholder="Your Name" style={{ backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "22px 24px", color: "#fff", fontSize: "16px", fontWeight: 300, outline: "none", width: "100%", boxSizing: "border-box", fontFamily: font }} />
-            <input type="email" placeholder="Your Email" style={{ backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "22px 24px", color: "#fff", fontSize: "16px", fontWeight: 300, outline: "none", width: "100%", boxSizing: "border-box", fontFamily: font }} />
-            <select style={{ backgroundColor: "#080808", border: "1px solid rgba(255,255,255,0.1)", padding: "22px 24px", color: "rgba(255,255,255,0.35)", fontSize: "16px", fontWeight: 300, outline: "none", width: "100%", boxSizing: "border-box", fontFamily: font }}>
-              <option value="">What can I help you with?</option>
-              <option value="lessons">Guitar Lessons</option>
-              <option value="touring">Touring / Hired Gun</option>
-              <option value="ai">AI Services</option>
-              <option value="other">Other</option>
-            </select>
-            <textarea rows={6} placeholder="Your Message" style={{ backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "22px 24px", color: "#fff", fontSize: "16px", fontWeight: 300, outline: "none", resize: "none", width: "100%", boxSizing: "border-box", fontFamily: font }} />
-            <button style={{ backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "24px", border: "none", cursor: "pointer", width: "100%", marginTop: "8px", fontFamily: font }}>Send Message</button>
-          </div>
+
+          {/* SUCCESS MESSAGE */}
+          {formStatus === "success" ? (
+            <div style={{ border: "1px solid rgba(245,158,11,0.4)", backgroundColor: "rgba(245,158,11,0.06)", padding: "48px 40px", textAlign: "center" }}>
+              <p style={{ fontSize: "32px", marginBottom: "16px" }}>🎸</p>
+              <p style={{ fontSize: "20px", fontWeight: 500, color: "#fff", fontFamily: font, marginBottom: "12px" }}>Message Sent!</p>
+              <p style={{ ...bodyText, fontSize: "16px" }}>Thanks for reaching out — Byron will get back to you soon.</p>
+              <button
+                onClick={() => setFormStatus("idle")}
+                style={{ marginTop: "28px", backgroundColor: "transparent", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", fontSize: "13px", letterSpacing: "0.2em", textTransform: "uppercase", padding: "14px 32px", cursor: "pointer", fontFamily: font }}
+              >
+                Send Another
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                style={inputStyle}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                style={inputStyle}
+              />
+              <select
+                name="subject"
+                required
+                value={formData.subject}
+                onChange={handleChange}
+                style={{ ...inputStyle, backgroundColor: "#080808", color: formData.subject ? "#fff" : "rgba(255,255,255,0.35)" }}
+              >
+                <option value="">What can I help you with?</option>
+                <option value="Guitar Lessons">Guitar Lessons</option>
+                <option value="Touring / Hired Gun">Touring / Hired Gun</option>
+                <option value="AI Services">AI Services</option>
+                <option value="Other">Other</option>
+              </select>
+              <textarea
+                name="message"
+                rows={6}
+                placeholder="Your Message"
+                required
+                value={formData.message}
+                onChange={handleChange}
+                style={{ ...inputStyle, resize: "none" }}
+              />
+
+              {formStatus === "error" && (
+                <p style={{ color: "#f87171", fontSize: "14px", fontFamily: font, textAlign: "center" }}>
+                  Something went wrong — please try again or email byron@byronnemeth.com directly.
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={formStatus === "sending"}
+                style={{
+                  backgroundColor: formStatus === "sending" ? "rgba(217,119,6,0.5)" : "#d97706",
+                  color: "#000",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  padding: "24px",
+                  border: "none",
+                  cursor: formStatus === "sending" ? "not-allowed" : "pointer",
+                  width: "100%",
+                  marginTop: "8px",
+                  fontFamily: font,
+                  transition: "background-color 0.2s",
+                }}
+              >
+                {formStatus === "sending" ? "Sending..." : "Send Message"}
+              </button>
+            </form>
+          )}
         </div>
       </section>
 
