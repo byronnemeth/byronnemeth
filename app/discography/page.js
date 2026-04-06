@@ -57,8 +57,8 @@ export default function Discography() {
       {/* HERO */}
 {/* HERO */}
 <section className="disc-hero" style={{ position: "relative", overflow: "hidden" }}>
-  <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-    <img src="/8bn.jpg" alt="Discography" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }} />
+  <div style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden" }}>
+    <img src="/8bn.jpg" alt="Discography" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center", position: "absolute", top: "0", left: "0", transform: "translateY(15%)" }} />
     <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #080808 0%, rgba(8,8,8,0.6) 50%, rgba(0,0,0,0.3) 100%)" }} />
   </div>
   <div className="disc-hero-inner" style={{ position: "relative", zIndex: 10 }}>
