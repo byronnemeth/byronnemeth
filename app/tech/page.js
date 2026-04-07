@@ -41,13 +41,41 @@ export default function Tech() {
   ];
 
   const designGroups = [
-    { client: "National Laser", work: "Illustrations", images: ["8.png", "9.png", "10.png", "11.png", "12.png", "12b.png"] },
-    { client: "Aaron Heaton", work: "Postcard Design", images: ["6.jpg"] },
-    { client: "National Laser", work: "Illustrations", images: ["7.jpg", "13.png"] },
-    { client: "Scottsdale Medical Imaging", work: "Business Cards & Postcards", images: ["2.png", "3.png", "4.png", "5.png"] },
-    { client: "Scottsdale Medical Imaging", work: "Trifold Brochure", images: ["25.jpg"] },
-    { client: "RLC Labs", work: "Brochure Layout", images: ["21.png", "22.png"] },
-    { client: "Scottsdale Medical Imaging", work: "Logo & Brand Identity", images: ["27.png", "27b.png", "28.png", "28b.png", "29.png", "30.png", "33.png", "33b.png", "34.png", "35.png", "37.png"] },
+    {
+      client: "National Laser",
+      work: "Illustrations",
+      images: ["8.png", "9.png", "10.png", "11.png", "12.png", "12b.png"],
+    },
+    {
+      client: "Aaron Heaton",
+      work: "Postcard Design",
+      images: ["6.jpg"],
+    },
+    {
+      client: "National Laser",
+      work: "Illustrations",
+      images: ["7.jpg", "13.png"],
+    },
+    {
+      client: "Scottsdale Medical Imaging",
+      work: "Business Cards & Postcards",
+      images: ["1.png", "2.png", "3.png", "4.png", "5.png"],
+    },
+    {
+      client: "Scottsdale Medical Imaging",
+      work: "Trifold Brochure",
+      images: ["25.jpg"],
+    },
+    {
+      client: "RLC Labs",
+      work: "Brochure Layout",
+      images: ["21.png", "22.png", "RLC3a.jpg", "RLC3b.jpg"],
+    },
+    {
+      client: "Scottsdale Medical Imaging",
+      work: "Logo & Brand Identity",
+      images: ["27.png", "27b.png", "28.png", "28b.png", "29.png", "30.png", "33.png", "33b.png", "34.png", "35.png", "37.png"],
+    },
   ];
 
   const allImages = designGroups.flatMap((g) => g.images.map((img) => ({ src: `/${img}`, client: g.client, work: g.work })));
