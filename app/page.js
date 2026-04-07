@@ -5,12 +5,10 @@ import Footer from "./components/Footer";
 import { useState } from "react";
 
 export default function Home() {
-  const [formStatus, setFormStatus] = useState("idle"); // idle | sending | success | error
+  const [formStatus, setFormStatus] = useState("idle");
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,15 +19,9 @@ export default function Home() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(formData),
       });
-      if (res.ok) {
-        setFormStatus("success");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      } else {
-        setFormStatus("error");
-      }
-    } catch {
-      setFormStatus("error");
-    }
+      if (res.ok) { setFormStatus("success"); setFormData({ name: "", email: "", subject: "", message: "" }); }
+      else setFormStatus("error");
+    } catch { setFormStatus("error"); }
   };
 
   const videos = [
@@ -49,7 +41,7 @@ export default function Home() {
 
   const font = "var(--font-inter), sans-serif";
   const sectionHeading = { fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 300, lineHeight: 1.1, fontFamily: font, marginBottom: "32px" };
-  const bodyText = { color: "rgba(255,255,255,0.55)", lineHeight: 1.85, fontSize: "19px", fontWeight: 300, fontFamily: font };
+  const bodyText = { color: "rgba(255,255,255,0.78)", lineHeight: 1.85, fontSize: "21px", fontWeight: 300, fontFamily: font };
   const label = { fontSize: "13px", letterSpacing: "0.5em", textTransform: "uppercase", color: "#f59e0b", fontFamily: font, fontWeight: 500 };
 
   const inputStyle = {
@@ -103,6 +95,8 @@ export default function Home() {
           .home-hero-btn-secondary { padding: 16px 32px; font-size: 12px; }
           .home-playlist-btns { flex-direction: column; }
           .home-contact-links { flex-direction: column; gap: 16px; }
+          .mob-body-text { font-size: 19px !important; color: rgba(255,255,255,0.82) !important; }
+          .mob-lesson-desc { font-size: 17px !important; color: rgba(255,255,255,0.82) !important; }
         }
       `}</style>
 
@@ -146,8 +140,8 @@ export default function Home() {
           <div className="home-music-header">
             <h2 style={{ ...sectionHeading, marginBottom: 0 }}>Music that <strong style={{ fontWeight: 700 }}>moves</strong> people</h2>
             <div className="home-playlist-btns">
-              <a href="https://youtube.com/playlist?list=OLAK5uy_ksa_i_hXH5O91GihOxdNX75XhLX_AnsE4&si=Y31RgtiQg_3ywUew" target="_blank" rel="noopener noreferrer" style={{ fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", padding: "12px 24px", textDecoration: "none", fontFamily: font, fontWeight: 400 }}>Greatest Hits ↗</a>
-              <a href="https://open.spotify.com/artist/72Be17THrKoSxQtWlJFvtV?si=oZvlieAgSj-nwhT9qFZa6g" target="_blank" rel="noopener noreferrer" style={{ fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", padding: "12px 24px", textDecoration: "none", fontFamily: font, fontWeight: 400 }}>Spotify ↗</a>
+              <a href="https://youtube.com/playlist?list=OLAK5uy_ksa_i_hXH5O91GihOxdNX75XhLX_AnsE4&si=Y31RgtiQg_3ywUew" target="_blank" rel="noopener noreferrer" style={{ fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.7)", padding: "12px 24px", textDecoration: "none", fontFamily: font, fontWeight: 400 }}>Greatest Hits ↗</a>
+              <a href="https://open.spotify.com/artist/72Be17THrKoSxQtWlJFvtV?si=oZvlieAgSj-nwhT9qFZa6g" target="_blank" rel="noopener noreferrer" style={{ fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.7)", padding: "12px 24px", textDecoration: "none", fontFamily: font, fontWeight: 400 }}>Spotify ↗</a>
             </div>
           </div>
           <div className="home-video-grid">
@@ -156,7 +150,7 @@ export default function Home() {
                 <div style={{ position: "relative", paddingTop: "56.25%", overflow: "hidden", backgroundColor: "rgba(255,255,255,0.04)" }}>
                   <iframe src={`https://www.youtube.com/embed/${video.id}`} title={video.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }} />
                 </div>
-                <p style={{ marginTop: "12px", fontSize: "11px", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", fontFamily: font, fontWeight: 400 }}>{video.title}</p>
+                <p style={{ marginTop: "12px", fontSize: "11px", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", fontFamily: font, fontWeight: 400 }}>{video.title}</p>
               </div>
             ))}
           </div>
@@ -175,7 +169,7 @@ export default function Home() {
           <div className="home-two-col">
             <div>
               <h2 style={sectionHeading}>Learn from<br />a <strong style={{ fontWeight: 700 }}>pro</strong></h2>
-              <p style={{ ...bodyText, marginBottom: "40px" }}>In-home guitar lessons across Las Vegas. Whether you are picking up the guitar for the first time or refining your craft at an advanced level — I meet you exactly where you are.</p>
+              <p className="mob-body-text" style={{ ...bodyText, marginBottom: "40px" }}>In-home guitar lessons across Las Vegas. Whether you are picking up the guitar for the first time or refining your craft at an advanced level — I meet you exactly where you are.</p>
               <a href="#contact" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Book Your First Lesson</a>
             </div>
             <div className="home-lesson-boxes">
@@ -186,7 +180,7 @@ export default function Home() {
               ].map((item) => (
                 <div key={item.level} style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "36px 40px" }}>
                   <h3 style={{ fontSize: "13px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#f59e0b", marginBottom: "14px", fontFamily: font, fontWeight: 500 }}>{item.level}</h3>
-                  <p style={{ color: "rgba(255,255,255,0.5)", fontWeight: 300, lineHeight: 1.8, fontSize: "17px", fontFamily: font }}>{item.desc}</p>
+                  <p className="mob-lesson-desc" style={{ color: "rgba(255,255,255,0.78)", fontWeight: 300, lineHeight: 1.8, fontSize: "18px", fontFamily: font }}>{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -206,8 +200,8 @@ export default function Home() {
           <div className="home-book-col">
             <div>
               <h2 style={sectionHeading}>The Zen of<br /><strong style={{ fontWeight: 700 }}>Guitar</strong></h2>
-              <p style={{ ...bodyText, fontSize: "19px", marginBottom: "20px" }}>Understanding Guitar Through Direct Intuition — Volume Three</p>
-              <p style={{ ...bodyText, color: "rgba(255,255,255,0.4)", marginBottom: "48px" }}>A transformative guide that goes beyond technique to explore the mindset, philosophy, and artistry that separates good players from truly great ones.</p>
+              <p className="mob-body-text" style={{ ...bodyText, fontSize: "21px", marginBottom: "20px" }}>Understanding Guitar Through Direct Intuition — Volume Three</p>
+              <p className="mob-body-text" style={{ ...bodyText, marginBottom: "48px" }}>A transformative guide that goes beyond technique to explore the mindset, philosophy, and artistry that separates good players from truly great ones.</p>
               <a href="https://www.amazon.com/dp/B0DYRT81GQ" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Get It on Amazon</a>
             </div>
             <div className="home-book-img">
@@ -216,7 +210,7 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <p style={{ ...bodyText, fontSize: "18px", color: "rgba(255,255,255,0.45)", lineHeight: 1.9, marginTop: "8px" }}>
+          <p className="mob-body-text" style={{ ...bodyText, fontSize: "19px", color: "rgba(255,255,255,0.72)", lineHeight: 1.9, marginTop: "8px" }}>
             Volume Three is now released, building upon the foundation of Volumes One and Two with groundbreaking and transformative additions. This new volume introduces the revolutionary concept of the Color Association of the Root Note with any of the Seven Modes, offering a visually intuitive and intellectually stimulating approach to understanding and applying modes. By connecting color theory with music theory, this innovative perspective deepens the player's comprehension of modal relationships and enhances their intuitive grasp of the fretboard.
           </p>
         </div>
@@ -232,93 +226,35 @@ export default function Home() {
             <p style={label}>Get In Touch</p>
           </div>
           <h2 style={{ ...sectionHeading, marginBottom: "20px" }}>Let us <strong style={{ fontWeight: 700 }}>connect</strong></h2>
-          <p style={{ color: "rgba(255,255,255,0.4)", fontWeight: 300, marginBottom: "16px", fontSize: "19px", fontFamily: font }}>Lessons &nbsp;·&nbsp; Touring &nbsp;·&nbsp; AI Services &nbsp;·&nbsp; Collaborations</p>
+          <p style={{ color: "rgba(255,255,255,0.7)", fontWeight: 300, marginBottom: "16px", fontSize: "20px", fontFamily: font }}>Lessons &nbsp;·&nbsp; Touring &nbsp;·&nbsp; AI Services &nbsp;·&nbsp; Collaborations</p>
           <div className="home-contact-links">
-            <a href="mailto:byron@byronnemeth.com" style={{ fontSize: "16px", color: "rgba(255,255,255,0.55)", textDecoration: "none", fontFamily: font, fontWeight: 300 }}>byron@byronnemeth.com</a>
-            <a href="tel:4802095309" style={{ fontSize: "16px", color: "rgba(255,255,255,0.55)", textDecoration: "none", fontFamily: font, fontWeight: 300 }}>480.209.5309</a>
+            <a href="mailto:byron@byronnemeth.com" style={{ fontSize: "17px", color: "rgba(255,255,255,0.75)", textDecoration: "none", fontFamily: font, fontWeight: 300 }}>byron@byronnemeth.com</a>
+            <a href="tel:4802095309" style={{ fontSize: "17px", color: "rgba(255,255,255,0.75)", textDecoration: "none", fontFamily: font, fontWeight: 300 }}>480.209.5309</a>
           </div>
 
-          {/* SUCCESS MESSAGE */}
           {formStatus === "success" ? (
             <div style={{ border: "1px solid rgba(245,158,11,0.4)", backgroundColor: "rgba(245,158,11,0.06)", padding: "48px 40px", textAlign: "center" }}>
               <p style={{ fontSize: "32px", marginBottom: "16px" }}>🎸</p>
               <p style={{ fontSize: "20px", fontWeight: 500, color: "#fff", fontFamily: font, marginBottom: "12px" }}>Message Sent!</p>
-              <p style={{ ...bodyText, fontSize: "16px" }}>Thanks for reaching out — Byron will get back to you soon.</p>
-              <button
-                onClick={() => setFormStatus("idle")}
-                style={{ marginTop: "28px", backgroundColor: "transparent", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", fontSize: "13px", letterSpacing: "0.2em", textTransform: "uppercase", padding: "14px 32px", cursor: "pointer", fontFamily: font }}
-              >
-                Send Another
-              </button>
+              <p style={{ ...bodyText, fontSize: "17px" }}>Thanks for reaching out — Byron will get back to you soon.</p>
+              <button onClick={() => setFormStatus("idle")} style={{ marginTop: "28px", backgroundColor: "transparent", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", fontSize: "13px", letterSpacing: "0.2em", textTransform: "uppercase", padding: "14px 32px", cursor: "pointer", fontFamily: font }}>Send Another</button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-                value={formData.name}
-                onChange={handleChange}
-                style={inputStyle}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                style={inputStyle}
-              />
-              <select
-                name="subject"
-                required
-                value={formData.subject}
-                onChange={handleChange}
-                style={{ ...inputStyle, backgroundColor: "#080808", color: formData.subject ? "#fff" : "rgba(255,255,255,0.35)" }}
-              >
+              <input type="text" name="name" placeholder="Your Name" required value={formData.name} onChange={handleChange} style={inputStyle} />
+              <input type="email" name="email" placeholder="Your Email" required value={formData.email} onChange={handleChange} style={inputStyle} />
+              <select name="subject" required value={formData.subject} onChange={handleChange} style={{ ...inputStyle, backgroundColor: "#080808", color: formData.subject ? "#fff" : "rgba(255,255,255,0.35)" }}>
                 <option value="">What can I help you with?</option>
                 <option value="Guitar Lessons">Guitar Lessons</option>
                 <option value="Touring / Hired Gun">Touring / Hired Gun</option>
                 <option value="AI Services">AI Services</option>
                 <option value="Other">Other</option>
               </select>
-              <textarea
-                name="message"
-                rows={6}
-                placeholder="Your Message"
-                required
-                value={formData.message}
-                onChange={handleChange}
-                style={{ ...inputStyle, resize: "none" }}
-              />
-
+              <textarea name="message" rows={6} placeholder="Your Message" required value={formData.message} onChange={handleChange} style={{ ...inputStyle, resize: "none" }} />
               {formStatus === "error" && (
-                <p style={{ color: "#f87171", fontSize: "14px", fontFamily: font, textAlign: "center" }}>
-                  Something went wrong — please try again or email byron@byronnemeth.com directly.
-                </p>
+                <p style={{ color: "#f87171", fontSize: "14px", fontFamily: font, textAlign: "center" }}>Something went wrong — please try again or email byron@byronnemeth.com directly.</p>
               )}
-
-              <button
-                type="submit"
-                disabled={formStatus === "sending"}
-                style={{
-                  backgroundColor: formStatus === "sending" ? "rgba(217,119,6,0.5)" : "#d97706",
-                  color: "#000",
-                  fontSize: "14px",
-                  fontWeight: 600,
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  padding: "24px",
-                  border: "none",
-                  cursor: formStatus === "sending" ? "not-allowed" : "pointer",
-                  width: "100%",
-                  marginTop: "8px",
-                  fontFamily: font,
-                  transition: "background-color 0.2s",
-                }}
-              >
+              <button type="submit" disabled={formStatus === "sending"} style={{ backgroundColor: formStatus === "sending" ? "rgba(217,119,6,0.5)" : "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "24px", border: "none", cursor: formStatus === "sending" ? "not-allowed" : "pointer", width: "100%", marginTop: "8px", fontFamily: font }}>
                 {formStatus === "sending" ? "Sending..." : "Send Message"}
               </button>
             </form>

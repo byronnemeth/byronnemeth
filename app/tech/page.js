@@ -8,7 +8,7 @@ export default function Tech() {
   const font = "var(--font-inter), sans-serif";
   const [lightbox, setLightbox] = useState(null);
 
-  const bodyText = { fontSize: "19px", lineHeight: 1.9, color: "rgba(255,255,255,0.55)", fontWeight: 300, fontFamily: font };
+  const bodyText = { fontSize: "20px", lineHeight: 1.9, color: "rgba(255,255,255,0.78)", fontWeight: 300, fontFamily: font };
   const sectionLabel = { fontSize: "13px", letterSpacing: "0.5em", textTransform: "uppercase", color: "#f59e0b", fontFamily: font, fontWeight: 500 };
   const sectionHeading = { fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 300, lineHeight: 1.1, fontFamily: font, marginBottom: "32px" };
 
@@ -69,6 +69,7 @@ export default function Tech() {
         .tech-masonry { column-gap: 16px; }
         .tech-hero-section { position: relative; min-height: 100vh; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
         .tech-hero-content { position: relative; z-index: 10; text-align: center; padding: 200px 48px 180px; width: 100%; max-width: 900px; margin: 0 auto; }
+        .tech-client-link { display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background-color: #080808; text-decoration: none; color: rgba(255,255,255,0.78); font-size: 16px; font-weight: 300; }
 
         @media (max-width: 768px) {
           .tech-section { padding-top: 72px; padding-bottom: 72px; }
@@ -79,6 +80,8 @@ export default function Tech() {
           .tech-clients-grid { grid-template-columns: 1fr; }
           .tech-masonry { columns: 1 !important; }
           .tech-hero-content { padding: 140px 20px 100px; }
+          .tech-client-link { font-size: 16px; color: rgba(255,255,255,0.82); }
+          .tech-mob-body { font-size: 18px !important; color: rgba(255,255,255,0.82) !important; }
         }
       `}</style>
 
@@ -92,12 +95,12 @@ export default function Tech() {
             <img src={lightbox.src} alt={lightbox.client} style={{ maxWidth: "100%", maxHeight: "72vh", objectFit: "contain", display: "block" }} />
             <div style={{ textAlign: "center" }}>
               <p style={{ fontSize: "15px", fontWeight: 500, color: "#fff", fontFamily: font, marginBottom: "4px" }}>{lightbox.client}</p>
-              <p style={{ fontSize: "12px", fontWeight: 300, color: "rgba(255,255,255,0.4)", fontFamily: font }}>{lightbox.work}</p>
+              <p style={{ fontSize: "12px", fontWeight: 300, color: "rgba(255,255,255,0.5)", fontFamily: font }}>{lightbox.work}</p>
             </div>
           </div>
           <button onClick={(e) => { e.stopPropagation(); nextImage(); }} style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", background: "none", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", fontSize: "24px", padding: "10px 16px", cursor: "pointer", fontFamily: font, zIndex: 10 }}>›</button>
           <button onClick={closeLightbox} style={{ position: "absolute", top: "16px", right: "20px", background: "none", border: "none", color: "rgba(255,255,255,0.5)", fontSize: "28px", cursor: "pointer", fontFamily: font }}>×</button>
-          <p style={{ position: "absolute", bottom: "16px", left: "50%", transform: "translateX(-50%)", fontSize: "12px", color: "rgba(255,255,255,0.3)", fontFamily: font }}>{lightbox.idx + 1} / {allImages.length}</p>
+          <p style={{ position: "absolute", bottom: "16px", left: "50%", transform: "translateX(-50%)", fontSize: "12px", color: "rgba(255,255,255,0.4)", fontFamily: font }}>{lightbox.idx + 1} / {allImages.length}</p>
         </div>
       )}
 
@@ -115,10 +118,10 @@ export default function Tech() {
           </h1>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "16px", marginBottom: "40px" }}>
             <div style={{ height: "1px", width: "40px", backgroundColor: "rgba(217,119,6,0.5)" }} />
-            <p style={{ fontSize: "clamp(10px, 3vw, 14px)", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", fontFamily: font, fontWeight: 300 }}>Automation · Chatbots · Web Development</p>
+            <p style={{ fontSize: "clamp(10px, 3vw, 14px)", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", fontFamily: font, fontWeight: 300 }}>Automation · Chatbots · Web Development</p>
             <div style={{ height: "1px", width: "40px", backgroundColor: "rgba(217,119,6,0.5)" }} />
           </div>
-          <p style={{ ...bodyText, fontSize: "19px", maxWidth: "680px", margin: "0 auto 48px", color: "rgba(255,255,255,0.7)" }}>
+          <p className="tech-mob-body" style={{ ...bodyText, fontSize: "20px", maxWidth: "680px", margin: "0 auto 48px" }}>
             I help businesses harness the power of AI automation — from intelligent chatbots to custom workflow systems. Let technology handle the repetitive work so you can focus on what matters most.
           </p>
           <a href="/#contact" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Let's Talk</a>
@@ -144,7 +147,7 @@ export default function Tech() {
               <div key={item.name} style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "40px 36px" }}>
                 <div style={{ fontSize: "36px", marginBottom: "20px" }}>{item.icon}</div>
                 <h3 style={{ fontSize: "20px", fontWeight: 600, color: "#ffffff", marginBottom: "14px", fontFamily: font }}>{item.name}</h3>
-                <p style={{ ...bodyText, fontSize: "17px" }}>{item.desc}</p>
+                <p className="tech-mob-body" style={{ ...bodyText, fontSize: "18px" }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -163,9 +166,9 @@ export default function Tech() {
                 <p style={sectionLabel}>Why Work With Me</p>
               </div>
               <h2 style={sectionHeading}>A different kind of<br /><strong style={{ fontWeight: 700 }}>tech partner</strong></h2>
-              <p style={{ ...bodyText, marginBottom: "28px" }}>I am not a faceless agency. I am a Las Vegas-based entrepreneur who builds and runs these same systems for my own businesses. When I build something for you, it is battle-tested.</p>
-              <p style={{ ...bodyText, marginBottom: "40px" }}>To date I have been involved in the development of 300+ websites — nothing outsourced, everything done in house. The phone is always on: <strong style={{ color: "rgba(255,255,255,0.8)", fontWeight: 500 }}>480.209.5309</strong></p>
-              <a href="/#contact" style={{ display: "inline-block", border: "1px solid rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.8)", fontSize: "14px", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 48px", textDecoration: "none", fontFamily: font }}>Start a Conversation</a>
+              <p className="tech-mob-body" style={{ ...bodyText, marginBottom: "28px" }}>I am not a faceless agency. I am a Las Vegas-based entrepreneur who builds and runs these same systems for my own businesses. When I build something for you, it is battle-tested.</p>
+              <p className="tech-mob-body" style={{ ...bodyText, marginBottom: "40px" }}>To date I have been involved in the development of 300+ websites — nothing outsourced, everything done in house. The phone is always on: <strong style={{ color: "#fff", fontWeight: 500 }}>480.209.5309</strong></p>
+              <a href="/#contact" style={{ display: "inline-block", border: "1px solid rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.85)", fontSize: "14px", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 48px", textDecoration: "none", fontFamily: font }}>Start a Conversation</a>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               {[
@@ -176,7 +179,7 @@ export default function Tech() {
               ].map((item) => (
                 <div key={item.stat} style={{ display: "flex", gap: "24px", alignItems: "flex-start", padding: "24px 28px", border: "1px solid rgba(255,255,255,0.08)" }}>
                   <p style={{ fontSize: "20px", fontWeight: 700, color: "#f59e0b", fontFamily: font, minWidth: "80px", lineHeight: 1 }}>{item.stat}</p>
-                  <p style={{ ...bodyText, fontSize: "15px", margin: 0 }}>{item.desc}</p>
+                  <p className="tech-mob-body" style={{ ...bodyText, fontSize: "16px", margin: 0 }}>{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -194,16 +197,17 @@ export default function Tech() {
             <p style={sectionLabel}>Web Development</p>
           </div>
           <h2 style={{ ...sectionHeading, marginBottom: "16px" }}>Client <strong style={{ fontWeight: 700 }}>Work</strong></h2>
-          <p style={{ ...bodyText, maxWidth: "680px", marginBottom: "56px" }}>A selection of web development projects across industries — from medical practices and music schools to fitness studios and tech companies.</p>
+          <p className="tech-mob-body" style={{ ...bodyText, maxWidth: "680px", marginBottom: "56px" }}>A selection of web development projects across industries — from medical practices and music schools to fitness studios and tech companies.</p>
           <div className="tech-clients-grid">
             {webClients.map((client, i) => (
               <a key={i} href={client.url} target="_blank" rel="noopener noreferrer"
-                style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "24px 28px", backgroundColor: "#080808", textDecoration: "none", color: "rgba(255,255,255,0.7)", fontSize: "15px", fontFamily: font, fontWeight: 300 }}
+                className="tech-client-link"
+                style={{ fontFamily: font }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgba(217,119,6,0.06)"}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#080808"}
               >
                 <span>{client.name}</span>
-                <span style={{ color: "#f59e0b", fontSize: "16px", opacity: 0.6 }}>↗</span>
+                <span style={{ color: "#f59e0b", fontSize: "16px", opacity: 0.7 }}>↗</span>
               </a>
             ))}
           </div>
@@ -220,15 +224,15 @@ export default function Tech() {
             <p style={sectionLabel}>Graphic Design</p>
           </div>
           <h2 style={{ ...sectionHeading, marginBottom: "16px" }}>Design <strong style={{ fontWeight: 700 }}>Portfolio</strong></h2>
-          <p style={{ ...bodyText, maxWidth: "680px", marginBottom: "64px" }}>Print, branding, and advertising design across medical, wellness, fitness, and professional services. Click any image to view full size.</p>
+          <p className="tech-mob-body" style={{ ...bodyText, maxWidth: "680px", marginBottom: "64px" }}>Print, branding, and advertising design across medical, wellness, fitness, and professional services. Click any image to view full size.</p>
 
           {designGroups.map((group, gi) => (
             <div key={gi} style={{ marginBottom: "64px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "20px", marginBottom: "24px" }}>
                 <div style={{ width: "4px", height: "32px", backgroundColor: "#d97706", borderRadius: "2px", flexShrink: 0 }} />
                 <div>
-                  <p style={{ fontSize: "17px", fontWeight: 500, color: "rgba(255,255,255,0.85)", fontFamily: font, marginBottom: "2px" }}>{group.client}</p>
-                  <p style={{ fontSize: "12px", fontWeight: 300, color: "rgba(255,255,255,0.35)", fontFamily: font, letterSpacing: "0.08em" }}>{group.work}</p>
+                  <p style={{ fontSize: "17px", fontWeight: 500, color: "rgba(255,255,255,0.9)", fontFamily: font, marginBottom: "2px" }}>{group.client}</p>
+                  <p style={{ fontSize: "12px", fontWeight: 300, color: "rgba(255,255,255,0.45)", fontFamily: font, letterSpacing: "0.08em" }}>{group.work}</p>
                 </div>
               </div>
               <div className="tech-masonry" style={{ columns: group.images.length === 1 ? "1" : group.images.length === 2 ? "2" : "3", columnGap: "16px" }}>
@@ -262,7 +266,7 @@ export default function Tech() {
             <div style={{ height: "1px", width: "40px", backgroundColor: "#d97706" }} />
           </div>
           <h2 style={{ ...sectionHeading, marginBottom: "24px", textAlign: "center" }}>Let's build something<br /><strong style={{ fontWeight: 700 }}>great together</strong></h2>
-          <p style={{ ...bodyText, marginBottom: "48px" }}>Whether you need a chatbot, a fully automated social media presence, or a brand new website — reach out and let's talk about what's possible.</p>
+          <p className="tech-mob-body" style={{ ...bodyText, marginBottom: "48px" }}>Whether you need a chatbot, a fully automated social media presence, or a brand new website — reach out and let's talk about what's possible.</p>
           <a href="/#contact" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Get In Touch</a>
         </div>
       </section>

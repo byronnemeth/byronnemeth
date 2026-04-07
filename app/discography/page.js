@@ -47,16 +47,22 @@ export default function Discography() {
         .disc-container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
         .disc-section { padding-top: 100px; padding-bottom: 160px; }
         .disc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 56px 40px; }
+        .disc-album-desc { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.72); font-weight: 300; }
         .disc-cta-section { padding-top: 120px; padding-bottom: 140px; text-align: center; }
         .disc-cta-inner { max-width: 600px; margin: 0 auto; padding: 0 48px; }
         .disc-stream-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
         @media (max-width: 768px) {
-          .disc-hero { min-height: 60vh; background-position: center 45%; }
+          .disc-hero {
+            min-height: 70vh;
+            background-position: center 20%;
+            background-attachment: scroll;
+          }
           .disc-hero-inner { padding: 100px 20px 80px; }
           .disc-container { padding: 0 20px; }
           .disc-section { padding-top: 60px; padding-bottom: 80px; }
           .disc-grid { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
+          .disc-album-desc { font-size: 14px !important; }
           .disc-cta-section { padding-top: 60px; padding-bottom: 80px; }
           .disc-cta-inner { padding: 0 20px; }
           .disc-stream-btns { flex-direction: column; align-items: stretch; }
@@ -65,6 +71,7 @@ export default function Discography() {
 
         @media (max-width: 480px) {
           .disc-grid { grid-template-columns: 1fr; }
+          .disc-hero { min-height: 75vh; background-position: center 20%; }
         }
       `}</style>
 
@@ -80,12 +87,12 @@ export default function Discography() {
           </h1>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "24px", marginBottom: "40px" }}>
             <div style={{ height: "1px", width: "40px", backgroundColor: "rgba(217,119,6,0.5)" }} />
-            <p style={{ fontSize: "14px", letterSpacing: "0.35em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", fontFamily: font, fontWeight: 300 }}>2000 – Present</p>
+            <p style={{ fontSize: "14px", letterSpacing: "0.35em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", fontFamily: font, fontWeight: 300 }}>2000 – Present</p>
             <div style={{ height: "1px", width: "40px", backgroundColor: "rgba(217,119,6,0.5)" }} />
           </div>
           <div className="disc-hero-btns">
             <a href="https://open.spotify.com/artist/72Be17THrKoSxQtWlJFvtV?si=oZvlieAgSj-nwhT9qFZa6g" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", letterSpacing: "0.2em", textTransform: "uppercase", backgroundColor: "#1DB954", color: "#000", fontWeight: 600, padding: "16px 36px", textDecoration: "none", fontFamily: font }}>Follow on Spotify</a>
-            <a href="https://youtube.com/playlist?list=OLAK5uy_ksa_i_hXH5O91GihOxdNX75XhLX_AnsE4&si=Y31RgtiQg_3ywUew" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", letterSpacing: "0.2em", textTransform: "uppercase", border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.7)", padding: "16px 36px", textDecoration: "none", fontFamily: font }}>Greatest Hits ↗</a>
+            <a href="https://youtube.com/playlist?list=OLAK5uy_ksa_i_hXH5O91GihOxdNX75XhLX_AnsE4&si=Y31RgtiQg_3ywUew" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", letterSpacing: "0.2em", textTransform: "uppercase", border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.8)", padding: "16px 36px", textDecoration: "none", fontFamily: font }}>Greatest Hits ↗</a>
           </div>
         </div>
       </section>
@@ -115,7 +122,7 @@ export default function Discography() {
                 <div style={{ paddingTop: "16px" }}>
                   <p style={{ fontSize: "11px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#f59e0b", fontFamily: font, fontWeight: 500, marginBottom: "6px" }}>{album.year} &nbsp;·&nbsp; {album.artist}</p>
                   <h3 style={{ fontSize: "18px", fontWeight: 600, color: "#ffffff", fontFamily: font, marginBottom: "8px", lineHeight: 1.2 }}>{album.title}</h3>
-                  <p style={{ fontSize: "15px", lineHeight: 1.7, color: "rgba(255,255,255,0.45)", fontWeight: 300, fontFamily: font }}>{album.desc}</p>
+                  <p className="disc-album-desc" style={{ fontFamily: font }}>{album.desc}</p>
                 </div>
               </div>
             ))}
@@ -133,13 +140,13 @@ export default function Discography() {
             <p style={{ fontSize: "13px", letterSpacing: "0.5em", textTransform: "uppercase", color: "#f59e0b", fontFamily: font, fontWeight: 500 }}>Stream Everywhere</p>
             <div style={{ height: "1px", width: "40px", backgroundColor: "#d97706" }} />
           </div>
-          <h2 style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 300, lineHeight: 1.1, fontFamily: font, margin: "0 0 40px" }}>
+          <h2 style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 300, lineHeight: 1.1, fontFamily: font, margin: "0 0 40px", color: "#fff" }}>
             All music available on <strong style={{ fontWeight: 700 }}>every platform</strong>
           </h2>
           <div className="disc-stream-btns">
             <a href="https://open.spotify.com/artist/72Be17THrKoSxQtWlJFvtV?si=oZvlieAgSj-nwhT9qFZa6g" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", backgroundColor: "#1DB954", color: "#000", fontSize: "13px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "18px 40px", textDecoration: "none", fontFamily: font }}>Spotify</a>
-            <a href="https://www.youtube.com/@byronnemeth" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.7)", fontSize: "13px", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", padding: "18px 40px", textDecoration: "none", fontFamily: font }}>YouTube</a>
-            <a href="https://soundcloud.com/byronnemethmusic" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.7)", fontSize: "13px", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", padding: "18px 40px", textDecoration: "none", fontFamily: font }}>SoundCloud</a>
+            <a href="https://www.youtube.com/@byronnemeth" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.8)", fontSize: "13px", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", padding: "18px 40px", textDecoration: "none", fontFamily: font }}>YouTube</a>
+            <a href="https://soundcloud.com/byronnemethmusic" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.8)", fontSize: "13px", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", padding: "18px 40px", textDecoration: "none", fontFamily: font }}>SoundCloud</a>
           </div>
         </div>
       </section>
