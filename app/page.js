@@ -65,10 +65,6 @@ export default function Home() {
         .home-container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
         .home-divider { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
         .home-hero-content { padding: 200px 48px 180px; }
-        .home-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
-        .home-book-col { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; margin-bottom: 56px; }
-        .home-book-img { display: flex; justify-content: center; }
-        .home-book-img img { width: 300px; }
         .home-contact-inner { max-width: 680px; margin: 0 auto; padding: 0 48px; }
         .home-music-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 80px; flex-wrap: wrap; gap: 24px; }
         .home-video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
@@ -76,18 +72,30 @@ export default function Home() {
         .home-hero-btn-primary { background-color: #d97706; color: #000; font-size: 14px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 20px 56px; text-decoration: none; font-family: var(--font-inter), sans-serif; }
         .home-hero-btn-secondary { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; padding: 20px 56px; text-decoration: none; font-family: var(--font-inter), sans-serif; }
         .home-playlist-btns { display: flex; gap: 16px; flex-wrap: wrap; }
-        .home-lesson-boxes { display: flex; flex-direction: column; gap: 20px; }
         .home-contact-links { display: flex; gap: 40px; margin-bottom: 52px; flex-wrap: wrap; }
+
+        /* LESSONS — image left, text+boxes right */
+        .lessons-grid { display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: start; }
+        .lessons-flyer { width: 380px; border-radius: 4px; display: block; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+        .lessons-right { display: flex; flex-direction: column; gap: 0; }
+        .lessons-boxes { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+
+        /* BOOK — image right, text left */
+        .book-grid { display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: center; margin-bottom: 56px; }
+        .book-img { width: 380px; border-radius: 4px; display: block; box-shadow: 0 40px 80px rgba(0,0,0,0.6); }
+
+        @media (max-width: 1024px) {
+          .lessons-grid { grid-template-columns: 300px 1fr; gap: 48px; }
+          .lessons-flyer { width: 300px; }
+          .book-grid { grid-template-columns: 1fr 300px; gap: 48px; }
+          .book-img { width: 300px; }
+        }
 
         @media (max-width: 768px) {
           .home-section { padding-top: 80px; padding-bottom: 80px; }
           .home-container { padding: 0 20px; }
           .home-divider { padding: 0 20px; }
           .home-hero-content { padding: 140px 20px 100px; }
-          .home-two-col { grid-template-columns: 1fr; gap: 40px; }
-          .home-book-col { grid-template-columns: 1fr; gap: 40px; margin-bottom: 32px; }
-          .home-book-img { order: -1; }
-          .home-book-img img { width: 220px; }
           .home-contact-inner { padding: 0 20px; }
           .home-music-header { flex-direction: column; align-items: flex-start; margin-bottom: 40px; }
           .home-video-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -95,8 +103,16 @@ export default function Home() {
           .home-hero-btn-secondary { padding: 16px 32px; font-size: 12px; }
           .home-playlist-btns { flex-direction: column; }
           .home-contact-links { flex-direction: column; gap: 16px; }
-          .mob-body-text { font-size: 19px !important; color: rgba(255,255,255,0.82) !important; }
-          .mob-lesson-desc { font-size: 17px !important; color: rgba(255,255,255,0.82) !important; }
+
+          /* Lessons stacked on mobile */
+          .lessons-grid { grid-template-columns: 1fr; gap: 32px; }
+          .lessons-flyer { width: 100%; max-width: 340px; margin: 0 auto; }
+
+          /* Book stacked on mobile */
+          .book-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
+          .book-img { width: 100%; max-width: 340px; margin: 0 auto; order: -1; }
+
+          .mob-body-text { font-size: 18px !important; color: rgba(255,255,255,0.82) !important; }
         }
       `}</style>
 
@@ -166,23 +182,34 @@ export default function Home() {
             <div style={{ height: "1px", width: "56px", backgroundColor: "#d97706" }} />
             <p style={label}>Guitar Lessons</p>
           </div>
-          <div className="home-two-col">
-            <div>
+
+          <div className="lessons-grid">
+            {/* LEFT — flyer image */}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <img
+                src="/LessonsFlyer.jpg"
+                alt="Byron Nemeth Guitar Lessons"
+                className="lessons-flyer"
+              />
+            </div>
+
+            {/* RIGHT — text + boxes */}
+            <div className="lessons-right">
               <h2 style={sectionHeading}>Learn from<br />a <strong style={{ fontWeight: 700 }}>pro</strong></h2>
               <p className="mob-body-text" style={{ ...bodyText, marginBottom: "40px" }}>In-home guitar lessons across Las Vegas. Whether you are picking up the guitar for the first time or refining your craft at an advanced level — I meet you exactly where you are.</p>
-              <a href="#contact" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Book Your First Lesson</a>
-            </div>
-            <div className="home-lesson-boxes">
-              {[
-                { level: "Beginner", desc: "Foundations, technique, and building great habits from day one" },
-                { level: "Intermediate", desc: "Expand your vocabulary, theory, and personal playing style" },
-                { level: "Advanced", desc: "Pro-level refinement, performance preparation, and artistry" },
-              ].map((item) => (
-                <div key={item.level} style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "36px 40px" }}>
-                  <h3 style={{ fontSize: "13px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#f59e0b", marginBottom: "14px", fontFamily: font, fontWeight: 500 }}>{item.level}</h3>
-                  <p className="mob-lesson-desc" style={{ color: "rgba(255,255,255,0.78)", fontWeight: 300, lineHeight: 1.8, fontSize: "18px", fontFamily: font }}>{item.desc}</p>
-                </div>
-              ))}
+              <a href="#contact" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font, alignSelf: "flex-start" }}>Book Your First Lesson</a>
+              <div className="lessons-boxes">
+                {[
+                  { level: "Beginner", desc: "Foundations, technique, and building great habits from day one" },
+                  { level: "Intermediate", desc: "Expand your vocabulary, theory, and personal playing style" },
+                  { level: "Advanced", desc: "Pro-level refinement, performance preparation, and artistry" },
+                ].map((item) => (
+                  <div key={item.level} style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "32px 36px" }}>
+                    <h3 style={{ fontSize: "13px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#f59e0b", marginBottom: "12px", fontFamily: font, fontWeight: 500 }}>{item.level}</h3>
+                    <p className="mob-body-text" style={{ color: "rgba(255,255,255,0.78)", fontWeight: 300, lineHeight: 1.8, fontSize: "18px", fontFamily: font }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -197,19 +224,29 @@ export default function Home() {
             <div style={{ height: "1px", width: "56px", backgroundColor: "#d97706" }} />
             <p style={label}>Published Work</p>
           </div>
-          <div className="home-book-col">
+
+          <div className="book-grid">
+            {/* LEFT — text */}
             <div>
               <h2 style={sectionHeading}>The Zen of<br /><strong style={{ fontWeight: 700 }}>Guitar</strong></h2>
               <p className="mob-body-text" style={{ ...bodyText, fontSize: "21px", marginBottom: "20px" }}>Understanding Guitar Through Direct Intuition — Volume Three</p>
               <p className="mob-body-text" style={{ ...bodyText, marginBottom: "48px" }}>A transformative guide that goes beyond technique to explore the mindset, philosophy, and artistry that separates good players from truly great ones.</p>
               <a href="https://www.amazon.com/dp/B0DYRT81GQ" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Get It on Amazon</a>
             </div>
-            <div className="home-book-img">
+
+            {/* RIGHT — book image, same 380px width as flyer */}
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <a href="https://www.amazon.com/dp/B0DYRT81GQ" target="_blank" rel="noopener noreferrer">
-                <img src="/zen.jpg" alt="The Zen of Guitar by Byron Nemeth" style={{ borderRadius: "4px", boxShadow: "0 40px 80px rgba(0,0,0,0.6)", display: "block" }} />
+                <img
+                  src="/zen.jpg"
+                  alt="The Zen of Guitar by Byron Nemeth"
+                  className="book-img"
+                />
               </a>
             </div>
           </div>
+
+          {/* Full-width description below */}
           <p className="mob-body-text" style={{ ...bodyText, fontSize: "19px", color: "rgba(255,255,255,0.72)", lineHeight: 1.9, marginTop: "8px" }}>
             Volume Three is now released, building upon the foundation of Volumes One and Two with groundbreaking and transformative additions. This new volume introduces the revolutionary concept of the Color Association of the Root Note with any of the Seven Modes, offering a visually intuitive and intellectually stimulating approach to understanding and applying modes. By connecting color theory with music theory, this innovative perspective deepens the player's comprehension of modal relationships and enhances their intuitive grasp of the fretboard.
           </p>
