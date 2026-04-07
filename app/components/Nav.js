@@ -94,7 +94,7 @@ export default function Nav({ activePage }) {
                       target={item.external ? "_blank" : undefined}
                       rel={item.external ? "noopener noreferrer" : undefined}
                       style={{
-                        fontSize: "11px",
+                        fontSize: "13px",
                         letterSpacing: "0.12em",
                         textTransform: "uppercase",
                         color: activePage === item.label ? "#f59e0b" : "rgba(255,255,255,0.72)",
