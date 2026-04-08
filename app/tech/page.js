@@ -13,10 +13,43 @@ export default function Tech() {
   const sectionHeading = { fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 300, lineHeight: 1.1, fontFamily: font, marginBottom: "32px" };
 
   const services = [
-    { name: "AI Chatbots", icon: "🤖", desc: "Custom AI assistants trained specifically on your business — your products, your voice, your FAQs. Available 24/7 to engage visitors, answer questions, capture leads, and convert browsers into buyers." },
-    { name: "Workflow Automation", icon: "⚡", desc: "Identify the repetitive tasks eating your time and eliminate them entirely. From automated follow-up emails to data entry to report generation — systems that run in the background so you can focus on growth." },
-    { name: "Social Media Automation", icon: "📱", desc: "Consistent, scheduled posting and engagement across Facebook, Instagram, YouTube, and more — without lifting a finger. Your brand stays active and visible even when you are on stage." },
-    { name: "Custom Web Development", icon: "💻", desc: "Modern, fast, beautifully designed websites built from scratch. Clean code that loads fast, ranks well on Google, and converts visitors into customers or fans." },
+    {
+      name: "AI Chatbots",
+      icon: "🤖",
+      desc: "Custom AI assistants trained specifically on your business — your products, your voice, your FAQs. Deployed on your website, WhatsApp, Telegram, Instagram DMs, Facebook Messenger, and more. Available 24/7 to engage visitors, answer questions, capture leads, and convert browsers into buyers without you lifting a finger.",
+    },
+    {
+      name: "Workflow Automation",
+      icon: "⚡",
+      desc: "Identify the repetitive tasks eating your time and eliminate them entirely. From automated follow-up emails and lead qualification to data entry, appointment scheduling, and report generation — AI systems that run in the background around the clock so you can focus on what matters most: growing your business.",
+    },
+    {
+      name: "Social Media Automation",
+      icon: "📱",
+      desc: "Consistent, scheduled posting and engagement across Facebook, Instagram, YouTube, and more — without lifting a finger. AI-powered content queues, auto-replies to comments and DMs, and daily performance briefings delivered straight to your phone. Your brand stays active and visible even when you are on stage.",
+    },
+    {
+      name: "Custom Web Development",
+      icon: "💻",
+      desc: "Modern, fast, beautifully designed websites built from scratch using the latest technologies. Clean code that loads fast, ranks well on Google, and converts visitors into customers or fans. Every site is fully owned by you — no monthly platform fees, no vendor lock-in, no compromises.",
+    },
+  ];
+
+  const agentUseCases = [
+    { icon: "📲", title: "WhatsApp & Telegram Business Agent", desc: "Your customers text a number and instantly get AI-powered answers about your business — hours, pricing, services, bookings — 24 hours a day, 7 days a week. No staff required." },
+    { icon: "📧", title: "Inbox & Email Automation", desc: "AI reads, sorts, prioritizes, and drafts replies to your emails automatically. One documented case had an AI clear 4,000 unread emails in two days while drafting replies to every important message." },
+    { icon: "🎯", title: "Lead Generation & Follow-Up", desc: "AI contacts new leads the moment they come in, qualifies them with smart questions, and books appointments directly into your calendar — before your competition even sees the inquiry." },
+    { icon: "📊", title: "Daily Business Briefing", desc: "Every morning your AI sends you a personalized summary of overnight messages, sales activity, new leads, and your top priorities for the day — directly to your phone via WhatsApp." },
+    { icon: "📅", title: "Appointment Scheduling", desc: "AI handles all booking, confirmation, and reminder messages automatically. Clients book themselves, get reminded automatically, and reschedule without you being involved at all." },
+    { icon: "🔍", title: "Market Research & Competitive Intelligence", desc: "AI agents research competitors, monitor your industry, scan for new opportunities, and deliver weekly reports directly to you — turning hours of manual research into minutes of reading." },
+  ];
+
+  const steps = [
+    { number: "01", title: "Meeting", desc: "We start with a detailed conversation to understand your business, your goals, your current pain points, and the exact outcomes you want from AI and technology. No assumptions — just deep listening." },
+    { number: "02", title: "Planning", desc: "I map out the complete solution — which tools, which platforms, which automations, and what the finished system looks like. You receive a clear plan before a single line of code is written." },
+    { number: "03", title: "Execute", desc: "I build everything to spec — website, AI agents, automation workflows, social media systems — all developed in-house by me personally. Nothing is outsourced. Nothing is templated." },
+    { number: "04", title: "Testing", desc: "Every system is tested rigorously before it goes live. We review the work together, make any adjustments, and confirm everything performs exactly as planned." },
+    { number: "05", title: "Delivery", desc: "Your solution launches live and I walk you through how to use it, monitor it, and grow with it. You own everything — and the phone is always on at 480.209.5309 if you ever need support." },
   ];
 
   const webClients = [
@@ -41,41 +74,13 @@ export default function Tech() {
   ];
 
   const designGroups = [
-    {
-      client: "National Laser",
-      work: "Illustrations",
-      images: ["8.png", "9.png", "10.png", "11.png", "12.png", "12b.png"],
-    },
-    {
-      client: "Aaron Heaton",
-      work: "Postcard Design",
-      images: ["6.jpg"],
-    },
-    {
-      client: "National Laser",
-      work: "Illustrations",
-      images: ["7.jpg", "13.png"],
-    },
-    {
-      client: "Scottsdale Medical Imaging",
-      work: "Business Cards & Postcards",
-      images: ["1.png", "2.png", "3.png", "4.png", "5.png"],
-    },
-    {
-      client: "Scottsdale Medical Imaging",
-      work: "Trifold Brochure",
-      images: ["25.jpg"],
-    },
-    {
-      client: "RLC Labs",
-      work: "Brochure Layout",
-      images: ["21.png", "22.png", "RLC3a.jpg", "RLC3b.jpg"],
-    },
-    {
-      client: "Scottsdale Medical Imaging",
-      work: "Logo & Brand Identity",
-      images: ["27.png", "27b.png", "28.png", "28b.png", "29.png", "30.png", "33.png", "33b.png", "34.png", "35.png", "37.png"],
-    },
+    { client: "National Laser", work: "Illustrations", images: ["8.png", "9.png", "10.png", "11.png", "12.png", "12b.png"] },
+    { client: "Aaron Heaton", work: "Postcard Design", images: ["6.jpg"] },
+    { client: "National Laser", work: "Illustrations", images: ["7.jpg", "13.png"] },
+    { client: "Scottsdale Medical Imaging", work: "Business Cards & Postcards", images: ["1.png", "2.png", "3.png", "4.png", "5.png"] },
+    { client: "Scottsdale Medical Imaging", work: "Trifold Brochure", images: ["25.jpg"] },
+    { client: "RLC Labs", work: "Brochure Layout", images: ["21.png", "22.png", "RLC3a.jpg", "RLC3b.jpg"] },
+    { client: "Scottsdale Medical Imaging", work: "Logo & Brand Identity", images: ["27.png", "27b.png", "28.png", "28b.png", "29.png", "30.png", "33.png", "33b.png", "34.png", "35.png", "37.png"] },
   ];
 
   const allImages = designGroups.flatMap((g) => g.images.map((img) => ({ src: `/${img}`, client: g.client, work: g.work })));
@@ -92,9 +97,11 @@ export default function Tech() {
         .tech-container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
         .tech-divider { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
         .tech-services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        .tech-agent-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
         .tech-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; }
         .tech-clients-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background-color: rgba(255,255,255,0.06); }
         .tech-masonry { column-gap: 16px; }
+        .tech-steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
         .tech-hero-section { position: relative; min-height: 100vh; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
         .tech-hero-content { position: relative; z-index: 10; text-align: center; padding: 200px 48px 180px; width: 100%; max-width: 900px; margin: 0 auto; }
         .tech-client-link { display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background-color: #080808; text-decoration: none; color: rgba(255,255,255,0.78); font-size: 16px; font-weight: 300; }
@@ -104,9 +111,11 @@ export default function Tech() {
           .tech-container { padding: 0 20px; }
           .tech-divider { padding: 0 20px; }
           .tech-services-grid { grid-template-columns: 1fr; gap: 20px; }
+          .tech-agent-grid { grid-template-columns: 1fr; gap: 20px; }
           .tech-why-grid { grid-template-columns: 1fr; gap: 40px; }
           .tech-clients-grid { grid-template-columns: 1fr; }
           .tech-masonry { columns: 1 !important; }
+          .tech-steps-grid { grid-template-columns: 1fr; gap: 0; }
           .tech-hero-content { padding: 140px 20px 100px; }
           .tech-client-link { font-size: 16px; color: rgba(255,255,255,0.82); }
           .tech-mob-body { font-size: 18px !important; color: rgba(255,255,255,0.82) !important; }
@@ -150,7 +159,7 @@ export default function Tech() {
             <div style={{ height: "1px", width: "40px", backgroundColor: "rgba(217,119,6,0.5)" }} />
           </div>
           <p className="tech-mob-body" style={{ ...bodyText, fontSize: "20px", maxWidth: "680px", margin: "0 auto 48px" }}>
-            I help businesses harness the power of AI automation — from intelligent chatbots to custom workflow systems. Let technology handle the repetitive work so you can focus on what matters most.
+            I help businesses harness the power of AI automation — from intelligent chatbots to autonomous AI agents deployed on WhatsApp, Telegram, and your website. Let technology handle the repetitive work so you can focus on what matters most.
           </p>
           <a href="/#contact" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Let's Talk</a>
         </div>
@@ -184,6 +193,55 @@ export default function Tech() {
 
       <div className="tech-divider"><div style={{ height: "1px", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)" }} /></div>
 
+      {/* AI AGENT DEPLOYMENT — OpenClaw section */}
+      <section className="tech-section">
+        <div className="tech-container">
+          <div style={{ display: "flex", alignItems: "center", gap: "24px", marginBottom: "20px" }}>
+            <div style={{ height: "1px", width: "56px", backgroundColor: "#d97706" }} />
+            <p style={sectionLabel}>AI Agent Deployment</p>
+          </div>
+          <h2 style={{ ...sectionHeading, marginBottom: "20px" }}>Your business running on <strong style={{ fontWeight: 700 }}>autopilot</strong></h2>
+          <p className="tech-mob-body" style={{ ...bodyText, maxWidth: "780px", marginBottom: "72px" }}>
+            Using the latest autonomous AI agent technology, I deploy intelligent systems that don't just answer questions — they take action. Your business gets a tireless AI employee that works 24/7 across WhatsApp, Telegram, email, social media, and your website simultaneously. Any business, any industry, any size.
+          </p>
+          <div className="tech-agent-grid">
+            {agentUseCases.map((item) => (
+              <div key={item.title} style={{ border: "1px solid rgba(255,255,255,0.08)", padding: "36px 32px", backgroundColor: "rgba(255,255,255,0.02)" }}>
+                <div style={{ fontSize: "32px", marginBottom: "16px" }}>{item.icon}</div>
+                <h3 style={{ fontSize: "17px", fontWeight: 600, color: "#ffffff", marginBottom: "12px", fontFamily: font, lineHeight: 1.3 }}>{item.title}</h3>
+                <p className="tech-mob-body" style={{ ...bodyText, fontSize: "16px" }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="tech-divider"><div style={{ height: "1px", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)" }} /></div>
+
+      {/* 5-STEP PROCESS */}
+      <section className="tech-section">
+        <div className="tech-container">
+          <div style={{ display: "flex", alignItems: "center", gap: "24px", marginBottom: "20px" }}>
+            <div style={{ height: "1px", width: "56px", backgroundColor: "#d97706" }} />
+            <p style={sectionLabel}>How It Works</p>
+          </div>
+          <h2 style={{ ...sectionHeading, marginBottom: "72px" }}>A proven <strong style={{ fontWeight: 700 }}>process</strong></h2>
+          <div className="tech-steps-grid">
+            {steps.map((step, i) => (
+              <div key={step.number} style={{ borderTop: "2px solid rgba(255,255,255,0.1)", paddingTop: "32px", paddingRight: i < steps.length - 1 ? "32px" : "0", paddingBottom: "0", position: "relative" }}>
+                {/* Active step accent */}
+                <div style={{ position: "absolute", top: "-2px", left: 0, width: "40px", height: "2px", backgroundColor: "#d97706" }} />
+                <p style={{ fontSize: "36px", fontWeight: 700, color: "rgba(245,158,11,0.25)", fontFamily: font, marginBottom: "16px", lineHeight: 1 }}>{step.number}</p>
+                <h3 style={{ fontSize: "16px", fontWeight: 600, color: "#fff", fontFamily: font, marginBottom: "14px", letterSpacing: "0.1em", textTransform: "uppercase" }}>{step.title}</h3>
+                <p className="tech-mob-body" style={{ ...bodyText, fontSize: "15px" }}>{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="tech-divider"><div style={{ height: "1px", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)" }} /></div>
+
       {/* WHY BYRON */}
       <section className="tech-section">
         <div className="tech-container">
@@ -194,7 +252,7 @@ export default function Tech() {
                 <p style={sectionLabel}>Why Work With Me</p>
               </div>
               <h2 style={sectionHeading}>A different kind of<br /><strong style={{ fontWeight: 700 }}>tech partner</strong></h2>
-              <p className="tech-mob-body" style={{ ...bodyText, marginBottom: "28px" }}>I am not a faceless agency. I am a Las Vegas-based entrepreneur who builds and runs these same systems for my own businesses. When I build something for you, it is battle-tested.</p>
+              <p className="tech-mob-body" style={{ ...bodyText, marginBottom: "28px" }}>I am not a faceless agency. I am a Las Vegas-based entrepreneur who builds and runs these same AI systems for my own businesses. When I build something for you, it is battle-tested in the real world.</p>
               <p className="tech-mob-body" style={{ ...bodyText, marginBottom: "40px" }}>To date I have been involved in the development of 300+ websites — nothing outsourced, everything done in house. The phone is always on: <strong style={{ color: "#fff", fontWeight: 500 }}>480.209.5309</strong></p>
               <a href="/#contact" style={{ display: "inline-block", border: "1px solid rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.85)", fontSize: "14px", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 48px", textDecoration: "none", fontFamily: font }}>Start a Conversation</a>
             </div>
@@ -294,7 +352,7 @@ export default function Tech() {
             <div style={{ height: "1px", width: "40px", backgroundColor: "#d97706" }} />
           </div>
           <h2 style={{ ...sectionHeading, marginBottom: "24px", textAlign: "center" }}>Let's build something<br /><strong style={{ fontWeight: 700 }}>great together</strong></h2>
-          <p className="tech-mob-body" style={{ ...bodyText, marginBottom: "48px" }}>Whether you need a chatbot, a fully automated social media presence, or a brand new website — reach out and let's talk about what's possible.</p>
+          <p className="tech-mob-body" style={{ ...bodyText, marginBottom: "48px" }}>Whether you need a chatbot, an autonomous AI agent, a fully automated social media presence, or a brand new website — reach out and let's talk about what's possible for your business.</p>
           <a href="/#contact" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Get In Touch</a>
         </div>
       </section>
