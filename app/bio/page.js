@@ -208,10 +208,22 @@ export default function Bio() {
           </div>
 
           {/* 2026 */}
-          <div className="bio-timeline-row">
-            <div><p className="bio-timeline-year">2026</p><p className="bio-timeline-label">• NAMM Show</p></div>
-            <p className="bio-body-p" style={bodyText}>Byron Nemeth Group delivered a successful and acclaimed performance at the 2026 NAMM Show in Anaheim, California — one of the most prestigious music industry events in the world. The performance showcased the band's powerful live presence and highlighted Byron's dual identity as a world-class guitarist and forward-thinking AI technology entrepreneur. The NAMM appearance reinforced Byron's standing as a multi-dimensional creative force — a musician whose artistry is matched by his vision for the future of technology and music.</p>
+        <div className="bio-timeline-row">
+          <div><p className="bio-timeline-year">2026</p></div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <div>
+              <p className="bio-sub-label">• NAMM Show</p>
+              <p className="bio-body-p" style={bodyText}>Byron Nemeth Group delivered a successful and acclaimed performance at the 2026 NAMM Show in Anaheim, California — one of the most prestigious music industry events in the world. The performance showcased the band's powerful live presence and highlighted Byron's dual identity as a world-class guitarist and forward-thinking AI technology entrepreneur. The NAMM appearance reinforced Byron's standing as a multi-dimensional creative force — a musician whose artistry is matched by his vision for the future of technology and music.</p>
+            </div>
+            <div>
+              <p className="bio-sub-label">• Season's Of May — Symphonic Reimagined</p>
+              <p className="bio-body-p" style={{ ...bodyText, marginBottom: "16px" }}><strong style={{ color: "#fff", fontWeight: 500 }}>Season's Of May — Symphonic Reimagined • Released 05.24.26</strong></p>
+              <p className="bio-body-p" style={{ ...bodyText, marginBottom: "16px" }}>Originally written by Byron Nemeth in the 1990s during a formative early creative period that helped shape his melodic and progressive guitar voice, the composition has now been transformed in 2026 into a sweeping symphonic statement — designed not simply as a song, but as a miniature motion picture. Recorded and mixed in the latest version of Avid Pro Tools, the new version features Byron's signature guitar work performed on his Charvel Jake E. Lee Strat, with modern tones shaped through the Fractal AM4 and Fractal VP4. Orchestral arrangements were developed with SUNO, expanding the composition into a lush, cinematic soundscape filled with drama, motion, and emotional lift.</p>
+              <p className="bio-body-p" style={{ ...bodyText, marginBottom: "16px" }}>For the visual side, Byron used Freebeat to create the animated movie-style presentation — making the video the visual companion, and in many ways the "film," to the song. The artwork reflects that same new world: a breathtaking cosmic fantasy scene where a futuristic guitar spacecraft launches through a galaxy of cherry blossoms, starlight, glowing planets, and dreamlike architecture.</p>
+              <p className="bio-body-p" style={bodyText}>With <em>Season's Of May — Symphonic Reimagined</em>, Byron officially launches a new direction into film composition and cinematic music production. Going forward, his releases will be conceived as mini-movies — some animated, some featuring Byron on screen, but always centered around his musicianship, guitar work, and complete musical vision. More than a remake, it is a reinvention — a modern symphonic expansion of a 1990s composition, rebuilt with today's recording tools, AI-assisted orchestration, futuristic visuals, and Byron Nemeth's unmistakable guitar voice at the center of it all.</p>
+            </div>
           </div>
+        </div>
 
           <div style={{ height: "1px", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)", marginBottom: "64px" }} />
 
