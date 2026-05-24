@@ -145,7 +145,81 @@ export default function Home() {
           <div style={{ width: "1px", height: "56px", background: "linear-gradient(to bottom, rgba(255,255,255,0.2), transparent)" }} />
         </div>
       </section>
+{/* FEATURED NEW RELEASE — Season's Of May (Symphonic Reimagined) */}
+<section style={{
+  padding: "120px 24px 40px",
+  borderTop: "1px solid rgba(255,255,255,0.06)",
+}}>
+  <div style={{ maxWidth: "1100px", margin: "0 auto", textAlign: "center" }}>
 
+    <div style={{
+      fontSize: "12px",
+      letterSpacing: "0.4em",
+      textTransform: "uppercase",
+      color: "#d97706",
+      fontFamily: "Georgia, serif",
+      marginBottom: "24px",
+    }}>
+      New Single &nbsp;·&nbsp; Out 05.24.26
+    </div>
+
+    <h2 style={{
+      fontSize: "clamp(34px, 5vw, 56px)",
+      fontFamily: "Georgia, serif",
+      fontWeight: "normal",
+      lineHeight: "1.1",
+      margin: "0 0 20px",
+      color: "#ffffff",
+    }}>
+      Season&rsquo;s Of May
+      <br />
+      <span style={{ color: "rgba(255,255,255,0.55)", fontStyle: "italic" }}>
+        Symphonic Reimagined
+      </span>
+    </h2>
+
+    <p style={{
+      fontSize: "15px",
+      lineHeight: "1.75",
+      color: "rgba(255,255,255,0.65)",
+      maxWidth: "720px",
+      margin: "0 auto 48px",
+      fontFamily: "Georgia, serif",
+    }}>
+      A 1990s composition reborn for 2026 &mdash; progressive guitar, modern
+      symphonic orchestration, and an original cinematic animated visual
+      designed as the film companion to the song. Out 05.24.26 on Spotify,
+      Apple Music, Amazon Music, and all major streaming platforms.
+    </p>
+
+    <div style={{
+      position: "relative",
+      width: "100%",
+      paddingBottom: "56.25%",
+      height: 0,
+      overflow: "hidden",
+      borderRadius: "12px",
+      border: "1px solid rgba(255,255,255,0.08)",
+      boxShadow: "0 30px 80px rgba(0,0,0,0.5)",
+    }}>
+      <iframe
+        src="https://www.youtube.com/embed/_9uWuUlTKso"
+        title="Byron Nemeth — Season's Of May (Symphonic Reimagined)"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          border: "none",
+        }}
+      />
+    </div>
+
+  </div>
+</section>
       {/* MUSIC */}
       <section id="music" className="home-section">
         <div className="home-container">
