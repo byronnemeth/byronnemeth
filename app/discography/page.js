@@ -7,7 +7,14 @@ export default function Discography() {
   const font = "var(--font-inter), sans-serif";
 
   const albums = [
-    {
+   {
+      year: "2026",
+      title: "Season's Of May — Symphonic Reimagined",
+      artist: "Byron Nemeth",
+      cover: "/seasons-of-may.jpg",
+      spotify: "https://open.spotify.com/album/1u3i1ljMKvSaFoNs300QP1",
+      desc: "A 1990s composition reborn in 2026 as a sweeping symphonic statement — designed as a miniature motion picture rather than just a song. Recorded and mixed in Avid Pro Tools with Byron's Charvel Jake E. Lee Strat through the Fractal AM4 and VP4, the track features orchestral arrangements developed with SUNO and an animated cinematic visual created with Freebeat. Released 05.24.26, this launches Byron's new direction into film composition and cinematic music production on Spotify, Apple Music, Amazon Music, and all major streaming platforms.",
+    }, {
       year: "2025",
       title: "I Am Thee Ocean",
       artist: "Byron Nemeth Group",
