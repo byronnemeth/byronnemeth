@@ -121,7 +121,7 @@ export default function Home() {
       {/* HERO */}
       <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-          <img src="/hero.jpg" alt="Byron Nemeth performing live" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }} />
+          <img src="/hero2.jpg" alt="Byron Nemeth in a futuristic cityscape" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #080808 0%, rgba(8,8,8,0.5) 50%, rgba(0,0,0,0.2) 100%)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(8,8,8,0.4), transparent 40%, transparent 60%, rgba(8,8,8,0.4))" }} />
         </div>
@@ -145,6 +145,95 @@ export default function Home() {
           <div style={{ width: "1px", height: "56px", background: "linear-gradient(to bottom, rgba(255,255,255,0.2), transparent)" }} />
         </div>
       </section>
+
+
+{/* FEATURED NEW VIDEO — Digital God (Official Music Video) */}
+<section style={{
+  padding: "120px 24px 40px",
+  borderTop: "1px solid rgba(255,255,255,0.06)",
+}}>
+  <div style={{ maxWidth: "1100px", margin: "0 auto", textAlign: "center" }}>
+
+    <div style={{
+      fontSize: "12px",
+      letterSpacing: "0.4em",
+      textTransform: "uppercase",
+      color: "#d97706",
+      fontFamily: "Georgia, serif",
+      marginBottom: "24px",
+    }}>
+      New Video &nbsp;·&nbsp; Official Music Video
+    </div>
+
+    <h2 style={{
+      fontSize: "clamp(34px, 5vw, 56px)",
+      fontFamily: "Georgia, serif",
+      fontWeight: "normal",
+      lineHeight: "1.1",
+      margin: "0 0 20px",
+      color: "#ffffff",
+    }}>
+      Digital God
+      <br />
+      <span style={{ color: "rgba(255,255,255,0.55)", fontStyle: "italic" }}>
+        A Three-Act Cinematic Rock Film
+      </span>
+    </h2>
+
+    <p style={{
+      fontSize: "15px",
+      lineHeight: "1.75",
+      color: "rgba(255,255,255,0.65)",
+      maxWidth: "720px",
+      margin: "0 auto 48px",
+      fontFamily: "Georgia, serif",
+    }}>
+      An original three-act cinematic rock film &mdash; progressive guitar
+      meets a dark, high-concept visual narrative told in three movements.
+      Watch the official music video now, with the single streaming on
+      Spotify, Apple Music, Amazon Music, and all major platforms.
+    </p>
+
+    <div style={{
+      position: "relative",
+      width: "100%",
+      paddingBottom: "56.25%",
+      height: 0,
+      overflow: "hidden",
+      borderRadius: "12px",
+      border: "1px solid rgba(255,255,255,0.08)",
+      boxShadow: "0 30px 80px rgba(0,0,0,0.5)",
+    }}>
+      <iframe
+        src="https://www.youtube.com/embed/DmvDNDq9ICg"
+        title="Digital God — Byron Nemeth (Official Music Video) | A Three-Act Cinematic Rock Film"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          border: "none",
+        }}
+      />
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
 {/* FEATURED NEW RELEASE — Season's Of May (Symphonic Reimagined) */}
 <section style={{
   padding: "120px 24px 40px",
