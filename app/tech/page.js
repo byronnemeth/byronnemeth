@@ -53,7 +53,7 @@ export default function Tech() {
   ];
 
   const webClients = [
-    { name: "Heaton Legal", url: "https://heatonlegal.com" }
+    { name: "Heaton Legal", url: "https://heatonlegal.com" },
     { name: "Sun City Posse", url: "https://suncityposse.org" },
     { name: "Lux Holiday Designs", url: "https://luxholidaydesigns.com" },
     { name: "Vegas Rehearsal", url: "https://vegasrehearsal.com" },
