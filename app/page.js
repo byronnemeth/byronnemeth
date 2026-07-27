@@ -162,7 +162,7 @@ export default function Home() {
       fontFamily: "Georgia, serif",
       marginBottom: "24px",
     }}>
-      New Video &nbsp;·&nbsp; Official Music Video
+      New Video &nbsp;·&nbsp; Released 07.26.26
     </div>
 
     <h2 style={{
@@ -249,7 +249,7 @@ export default function Home() {
       fontFamily: "Georgia, serif",
       marginBottom: "24px",
     }}>
-      New Single &nbsp;·&nbsp; Out 05.24.26
+      Released &nbsp;·&nbsp; 05.24.26
     </div>
 
     <h2 style={{
