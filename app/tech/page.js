@@ -53,10 +53,10 @@ export default function Tech() {
   ];
 
   const webClients = [
+    { name: "Heaton Legal", url: "https://heatonlegal.com" }
     { name: "Sun City Posse", url: "https://suncityposse.org" },
     { name: "Lux Holiday Designs", url: "https://luxholidaydesigns.com" },
     { name: "Vegas Rehearsal", url: "https://vegasrehearsal.com" },
-    { name: "Las Vegas Psychiatry", url: "https://lasvegas-psychiatry.com" },
     { name: "Madd Ears", url: "https://www.maddears.com" },
     { name: "Gateway Family Dentistry", url: "https://gatewayfamilydentistry.com" },
     { name: "Edgemark Solutions", url: "https://www.edgemarksolutions.com" },
