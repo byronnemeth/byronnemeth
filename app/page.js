@@ -145,6 +145,64 @@ export default function Home() {
           <div style={{ width: "1px", height: "56px", background: "linear-gradient(to bottom, rgba(255,255,255,0.2), transparent)" }} />
         </div>
       </section>
+      {/* LIVE CONCERT FOOTAGE — vertical YouTube Short */}
+      <section style={{
+        padding: "120px 24px 40px",
+        borderTop: "1px solid rgba(255,255,255,0.06)",
+      }}>
+        <div style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          gap: "56px",
+        }}>
+
+          {/* Text — left */}
+          <div style={{ flex: "1 1 400px" }}>
+            <h2 style={{
+              fontSize: "clamp(26px, 4vw, 40px)",
+              fontFamily: "Georgia, serif",
+              fontWeight: 400,
+              lineHeight: 1.25,
+              color: "#fff",
+              marginBottom: "28px",
+            }}>
+              🎸 LIVE CONCERT FOOTAGE — <span style={{ color: "#d97706" }}>BYRON NEMETH</span> 🎸
+            </h2>
+            <p className="mob-body-text" style={{ fontSize: "17px", lineHeight: 1.8, color: "rgba(255,255,255,0.82)", marginBottom: "20px" }}>
+              Experience the energy of Byron Nemeth live in concert, featuring expressive instrumental guitar, powerful improvisation, and a dynamic blend of jazz fusion and rock inspired by players such as Jeff Beck. This performance captures the interaction between tone, technique, melody, and the spontaneous energy that can only happen on stage.
+            </p>
+            <p className="mob-body-text" style={{ fontSize: "17px", lineHeight: 1.8, color: "rgba(255,255,255,0.82)" }}>
+              Whether you’re a guitarist, musician, or simply a fan of instrumental music, I hope you enjoy this look inside the live performance experience. 🎶⚡🎸
+            </p>
+          </div>
+
+          {/* Vertical video — right */}
+          <div style={{ flex: "1 1 300px", display: "flex", justifyContent: "center" }}>
+            <div style={{
+              width: "100%",
+              maxWidth: "340px",
+              aspectRatio: "9 / 16",
+              borderRadius: "12px",
+              overflow: "hidden",
+              border: "1px solid rgba(217,119,6,0.35)",
+              boxShadow: "0 0 40px rgba(80,10,10,0.6)",
+            }}>
+              <iframe
+                src="https://www.youtube.com/embed/jE6rGBf0x-U"
+                title="Byron Nemeth — Live Concert Footage"
+                style={{ width: "100%", height: "100%", border: 0 }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+        </div>
+      </section>
 
 
 {/* FEATURED NEW VIDEO — Digital God (Official Music Video) */}
