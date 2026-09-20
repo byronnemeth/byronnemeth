@@ -140,15 +140,11 @@ export default function Home() {
             <a href="#contact" className="home-hero-btn-secondary">Book a Lesson</a>
           </div>
         </div>
-        <div style={{ position: "absolute", bottom: "40px", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", gap: "12px", color: "rgba(255,255,255,0.2)" }}>
-          <span style={{ fontSize: "11px", letterSpacing: "0.4em", textTransform: "uppercase", fontFamily: font }}>Scroll</span>
-          <div style={{ width: "1px", height: "56px", background: "linear-gradient(to bottom, rgba(255,255,255,0.2), transparent)" }} />
-        </div>
       </section>
       {/* LIVE CONCERT FOOTAGE — vertical YouTube Short */}
       <section style={{
-        padding: "120px 24px 40px",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
+        padding: "50px 24px 40px",
+  
       }}>
         <div style={{
           maxWidth: "1100px",
