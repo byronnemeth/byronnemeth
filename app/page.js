@@ -203,8 +203,8 @@ export default function Home() {
 
 {/* FEATURED NEW VIDEO — Digital God (Official Music Video) */}
 <section style={{
-  padding: "120px 24px 40px",
-  borderTop: "1px solid rgba(255,255,255,0.06)",
+  padding: "60px 24px 40px",
+  
 }}>
   <div style={{ maxWidth: "1100px", margin: "0 auto", textAlign: "center" }}>
 
