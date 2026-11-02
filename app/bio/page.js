@@ -161,7 +161,7 @@ export default function Bio() {
             <div><p className="bio-timeline-year">2022</p></div>
             <div>
               <p className="bio-sub-label">• Las Vegas</p>
-              <p className="bio-body-p" style={bodyText}>In May 2022 Byron Nemeth relocated to Las Vegas for a fabulous real estate purchase and to pursue the music business in Las Vegas that is internationally renowned for its entertainment, nightlife, recording studios and great music. Now in 2023 plans are underway for a brand new single and video to be released in the coming months.</p>
+              <p className="bio-body-p" style={bodyText}>In May 2022 Byron Nemeth relocated to Las Vegas for a fabulous real estate purchase and to pursue the music business in Las Vegas that is internationally renowned for its entertainment, nightlife, recording studios and great music.</p>
             </div>
           </div>
 
@@ -222,6 +222,19 @@ export default function Bio() {
               <p className="bio-body-p" style={{ ...bodyText, marginBottom: "16px" }}>For the visual side, Byron used Freebeat to create the animated movie-style presentation — making the video the visual companion, and in many ways the "film," to the song. The artwork reflects that same new world: a breathtaking cosmic fantasy scene where a futuristic guitar spacecraft launches through a galaxy of cherry blossoms, starlight, glowing planets, and dreamlike architecture.</p>
               <p className="bio-body-p" style={bodyText}>With <em>Season's Of May — Symphonic Reimagined</em>, Byron officially launches a new direction into film composition and cinematic music production. Going forward, his releases will be conceived as mini-movies — some animated, some featuring Byron on screen, but always centered around his musicianship, guitar work, and complete musical vision. More than a remake, it is a reinvention — a modern symphonic expansion of a 1990s composition, rebuilt with today's recording tools, AI-assisted orchestration, futuristic visuals, and Byron Nemeth's unmistakable guitar voice at the center of it all.</p>
             </div>
+            <div>
+              <p className="bio-sub-label">• Digital God — A Three-Act Cinematic Rock Film</p>
+              <p className="bio-body-p" style={{ ...bodyText, marginBottom: "16px" }}><a href="https://www.youtube.com/watch?v=DmvDNDq9ICg" target="_blank" rel="noopener noreferrer" style={link}><strong style={{ color: "#f59e0b" }}>Digital God</strong> Official Music Video Released 07.26.26</a> &nbsp;•&nbsp; View on YouTube <a href="https://www.youtube.com/watch?v=DmvDNDq9ICg" target="_blank" rel="noopener noreferrer" style={link}>HERE</a></p>
+              <p className="bio-body-p" style={bodyText}>Continuing the cinematic direction launched with <em>Season's Of May</em>, Byron released <strong style={{ color: "#fff", fontWeight: 500 }}>Digital God</strong>, an original instrumental rock single paired with a three-act cinematic film. Progressive guitar meets a dark, high-concept visual narrative told in three movements, with the official music video on YouTube and the single streaming on Spotify, Apple Music, Amazon Music and all major platforms.</p>
+            </div>
+            <div>
+              <p className="bio-sub-label">• The Zen Of Guitar — Volume Four</p>
+              <p className="bio-body-p" style={{ ...bodyText, marginBottom: "16px" }}><strong style={{ color: "#fff", fontWeight: 500 }}>The Zen Of Guitar • Understanding Guitar Thru Direct Intuition Volume Four • Released 10.27.26</strong></p>
+              <p className="bio-body-p" style={{ ...bodyText, marginBottom: "16px" }}>The fourth book in the series and Byron's most complete guide to the fretboard yet. Almost twice the size of <em>Volume Three</em>, the full-color 8.5 × 11 edition ties chords, scales, arpeggios and modes into one clear picture of the neck, adding a new chapter on technique and expression (bending in tune, vibrato, legato, picking sequences and phrasing, plus a 12-bar blues solo study), a new chapter of <em>Modal Pentatonics</em> with five-note portraits of all seven modes, and dozens of new lessons, from the Nashville Number System and the CAGED system to tapping and sweep-picking arpeggios.</p>
+              <p className="bio-body-p" style={{ ...bodyText, marginBottom: "16px" }}>Every diagram speaks the same visual language, with red squares for roots, finger numbers, interval labels and color-coded blocks, and a new Weekly Practice Plan turns the lessons into a focused 30-minute daily routine. The performance chapter includes a chord-by-chord study of Byron's composition "I Don't Mind" along with the stories behind his recordings and videos.</p>
+              <p className="bio-body-p" style={{ ...bodyText, fontStyle: "italic", marginBottom: "16px" }}>"This book isn't about memorizing rules; it's about learning to listen to your ears, your instincts and the music that's already inside you. Trust what you hear, follow what you feel, and let the guitar take you somewhere new."</p>
+              <p className="bio-body-p" style={bodyText}>Available now in paperback. Purchase on Amazon <a href="https://www.amazon.com/dp/B0HPDWZ9HX" target="_blank" rel="noopener noreferrer" style={link}>HERE.</a></p>
+            </div>
           </div>
         </div>
 
@@ -249,7 +262,7 @@ export default function Bio() {
           </div>
           <div className="bio-cta-row">
             <a href="/#contact" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Book a Lesson</a>
-            <a href="https://www.amazon.com/dp/B0DYRT81GQ" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", border: "1px solid rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.8)", fontSize: "14px", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Get The Book</a>
+            <a href="https://www.amazon.com/dp/B0HPDWZ9HX" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", border: "1px solid rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.8)", fontSize: "14px", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Get The Book</a>
           </div>
 
         </div>

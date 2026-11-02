@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Bio", href: "/bio" },
+  { label: "Shows", href: "/#shows" },
   { label: "Music", href: "/#music" },
   { label: "Discography", href: "/discography" },
   { label: "Lessons", href: "/#lessons" },
@@ -19,7 +20,7 @@ export default function Nav({ activePage }) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 1024);
+    const check = () => setIsMobile(window.innerWidth < 1300);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -84,7 +85,7 @@ export default function Nav({ activePage }) {
                       <span style={{
                         color: "rgba(245,158,11,0.6)",
                         fontSize: "14px",
-                        padding: "0 10px",
+                        padding: "0 8px",
                         userSelect: "none",
                         flexShrink: 0,
                       }}>•</span>

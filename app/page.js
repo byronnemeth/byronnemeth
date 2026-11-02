@@ -2,9 +2,68 @@
 
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
+
+// ─── UPCOMING SHOWS ──────────────────────────────────────────────────────────
+// To add a show: put the flyer in /public/shows/ and add an entry to this list.
+// Shows are listed by date and drop off the site automatically after show day.
+// When the list has no upcoming shows, the section says "new dates coming soon".
+const shows = [
+  {
+    date: "2026-11-07", // YYYY-MM-DD
+    startTime: "18:00", // 24-hour, used for "Add to Calendar"
+    endTime: "21:00",
+    time: "6:00 PM – 9:00 PM",
+    venue: "Parlour Wine Bar & Eatery",
+    billing: "An Evening of Instrumental Jazz Fusion",
+    description: "Jeff Beck-inspired jazz fusion rock and an instrumental guitar virtuoso performance. Come for the wine. Stay for the guitar.",
+    address: "1716 W Horizon Ridge Pkwy, Suite 100",
+    city: "Henderson, NV 89012",
+    flyer: "/shows/2026-11-07-parlour.jpg",
+    tickets: "", // optional: ticket link
+  },
+];
+
+const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+function showDateParts(dateStr) {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  const weekday = WEEKDAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()];
+  return { year: y, month: MONTHS[m - 1], day: d, weekday };
+}
+
+function showMapsUrl(show) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${show.venue}, ${show.address}, ${show.city}`)}`;
+}
+
+function showCalendarUrl(show) {
+  const ymd = show.date.replace(/-/g, "");
+  const t = (hhmm) => hhmm.replace(":", "") + "00";
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: `Byron Nemeth Live at ${show.venue}`,
+    dates: `${ymd}T${t(show.startTime)}/${ymd}T${t(show.endTime)}`,
+    ctz: "America/Los_Angeles",
+    location: `${show.venue}, ${show.address}, ${show.city}`,
+    details: `${show.billing}. More at byronnemeth.com`,
+  });
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
+
+// Today's date in the visitor's browser (null while the page is pre-rendered on the server).
+const noSubscribe = () => () => {};
+function localToday() {
+  const n = new Date();
+  return `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, "0")}-${String(n.getDate()).padStart(2, "0")}`;
+}
 
 export default function Home() {
+  const today = useSyncExternalStore(noSubscribe, localToday, () => null);
+  const upcomingShows = shows
+    .filter((s) => !today || s.date >= today)
+    .sort((a, b) => a.date.localeCompare(b.date));
+
   const [formStatus, setFormStatus] = useState("idle");
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
 
@@ -83,8 +142,24 @@ export default function Home() {
         /* BOOK — image right, text left */
         .book-grid { display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: center; margin-bottom: 56px; }
         .book-img { width: 380px; border-radius: 4px; display: block; box-shadow: 0 40px 80px rgba(0,0,0,0.6); }
+        .book-facts { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-bottom: 44px; }
+        .book-quote { border-left: 2px solid #d97706; padding: 8px 0 8px 32px; margin: 0 0 72px; }
+        .book-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 28px; margin-bottom: 48px; }
+
+        /* SHOWS — flyer left, details right */
+        .shows-section { padding-top: 120px; padding-bottom: 100px; }
+        .shows-list { display: flex; flex-direction: column; gap: 72px; }
+        .show-card { display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: center; }
+        .show-flyer { width: 380px; border-radius: 4px; display: block; box-shadow: 0 30px 70px rgba(0,0,0,0.6), 0 0 40px rgba(80,10,10,0.5); border: 1px solid rgba(217,119,6,0.25); }
+        .show-details { display: grid; grid-template-columns: 110px 1fr; gap: 14px 24px; margin: 0 0 44px; }
+        .show-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+        .show-btn-primary { display: inline-block; background-color: #d97706; color: #000; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 18px 40px; text-decoration: none; font-family: var(--font-inter), sans-serif; }
+        .show-btn-secondary { display: inline-block; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; padding: 18px 40px; text-decoration: none; font-family: var(--font-inter), sans-serif; }
 
         @media (max-width: 1024px) {
+          .show-card { grid-template-columns: 300px 1fr; gap: 48px; }
+          .show-flyer { width: 300px; }
+          .book-features { grid-template-columns: repeat(2, 1fr); }
           .lessons-grid { grid-template-columns: 300px 1fr; gap: 48px; }
           .lessons-flyer { width: 300px; }
           .book-grid { grid-template-columns: 1fr 300px; gap: 48px; }
@@ -113,6 +188,19 @@ export default function Home() {
           .book-img { width: 100%; max-width: 340px; margin: 0 auto; order: -1; }
 
           .mob-body-text { font-size: 18px !important; color: rgba(255,255,255,0.82) !important; }
+
+          /* Shows stacked on mobile */
+          .shows-section { padding-top: 72px; padding-bottom: 56px; }
+          .show-card { grid-template-columns: 1fr; gap: 32px; }
+          .show-flyer { width: 100%; max-width: 420px; margin: 0 auto; }
+          .show-details { grid-template-columns: 1fr; gap: 4px; }
+          .show-details dd { margin-bottom: 14px !important; }
+          .show-buttons { flex-direction: column; }
+          .show-buttons a { text-align: center; }
+
+          /* Book extras on mobile */
+          .book-features { grid-template-columns: 1fr; }
+          .book-quote { padding-left: 20px; margin-bottom: 48px; }
         }
       `}</style>
 
@@ -121,11 +209,11 @@ export default function Home() {
       {/* HERO */}
       <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-          <img src="/hero2.jpg" alt="Byron Nemeth in a futuristic cityscape" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }} />
+          <img src="/hero3.jpg" alt="Byron Nemeth with his white Flying V" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 18%" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #080808 0%, rgba(8,8,8,0.5) 50%, rgba(0,0,0,0.2) 100%)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(8,8,8,0.4), transparent 40%, transparent 60%, rgba(8,8,8,0.4))" }} />
         </div>
-        <div className="home-hero-content" style={{ position: "relative", zIndex: 10, textAlign: "center", width: "100%", maxWidth: "960px", margin: "0 auto" }}>
+        <div className="home-hero-content" style={{ position: "relative", zIndex: 10, textAlign: "center", width: "100%", maxWidth: "960px", margin: "0 auto", textShadow: "0 2px 18px rgba(0,0,0,0.65)" }}>
           <p style={{ fontSize: "13px", letterSpacing: "0.6em", textTransform: "uppercase", color: "rgba(245,158,11,0.85)", marginBottom: "32px", fontFamily: font, fontWeight: 400 }}>Las Vegas, Nevada</p>
           <h1 style={{ fontSize: "clamp(64px, 13vw, 170px)", fontWeight: 200, letterSpacing: "-0.02em", lineHeight: 0.9, marginBottom: "40px", fontFamily: font }}>
             Byron<br /><strong style={{ fontWeight: 700 }}>Nemeth</strong>
@@ -141,6 +229,70 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* UPCOMING SHOWS — one flyer per show; edit the `shows` list at the top of this file */}
+      <section id="shows" className="shows-section">
+        <div className="home-container">
+          <div style={{ display: "flex", alignItems: "center", gap: "24px", marginBottom: "20px" }}>
+            <div style={{ height: "1px", width: "56px", backgroundColor: "#d97706" }} />
+            <p style={label}>Live Dates</p>
+          </div>
+          <h2 style={{ ...sectionHeading, marginBottom: "64px" }}>Next <strong style={{ fontWeight: 700 }}>shows</strong></h2>
+
+          {upcomingShows.length === 0 ? (
+            <p className="mob-body-text" style={bodyText}>
+              New dates are coming soon. Follow along on{" "}
+              <a href="https://www.instagram.com/byronnemeth/" target="_blank" rel="noopener noreferrer" style={{ color: "#f59e0b", textDecoration: "none" }}>Instagram</a>{" "}
+              for the next announcement, or <a href="#contact" style={{ color: "#f59e0b", textDecoration: "none" }}>get in touch</a> to book a performance.
+            </p>
+          ) : (
+            <div className="shows-list">
+              {upcomingShows.map((show) => {
+                const d = showDateParts(show.date);
+                const dt = { fontSize: "12px", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", fontFamily: font, fontWeight: 500, paddingTop: "4px" };
+                const dd = { margin: 0, fontSize: "18px", color: "rgba(255,255,255,0.85)", fontFamily: font, fontWeight: 300, lineHeight: 1.6 };
+                return (
+                  <article key={show.date + show.venue} className="show-card">
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <a href={show.flyer} target="_blank" rel="noopener noreferrer" aria-label={`Open the full-size flyer for ${show.venue}`}>
+                        <img src={show.flyer} alt={`Flyer: Byron Nemeth live at ${show.venue}, ${d.weekday} ${d.month} ${d.day}`} className="show-flyer" />
+                      </a>
+                    </div>
+                    <div>
+                      <p style={{ ...label, letterSpacing: "0.35em", marginBottom: "18px" }}>{d.weekday} &nbsp;·&nbsp; {d.month} {d.day}, {d.year}</p>
+                      <h3 style={{ fontSize: "clamp(30px, 4vw, 48px)", fontFamily: "Georgia, serif", fontWeight: 400, lineHeight: 1.15, color: "#fff", margin: "0 0 14px" }}>{show.venue}</h3>
+                      <p style={{ fontSize: "clamp(18px, 2.2vw, 22px)", fontFamily: "Georgia, serif", fontStyle: "italic", color: "rgba(255,255,255,0.6)", margin: "0 0 24px", lineHeight: 1.4 }}>{show.billing}</p>
+                      {show.description && (
+                        <p className="mob-body-text" style={{ ...bodyText, fontSize: "18px", marginBottom: "36px" }}>{show.description}</p>
+                      )}
+                      <dl className="show-details">
+                        <dt style={dt}>Time</dt>
+                        <dd style={dd}>{show.time}</dd>
+                        <dt style={dt}>Where</dt>
+                        <dd style={dd}>
+                          <a href={showMapsUrl(show)} target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.85)", textDecoration: "none", borderBottom: "1px solid rgba(245,158,11,0.5)" }}>
+                            {show.address}<br />{show.city}
+                          </a>
+                        </dd>
+                      </dl>
+                      <div className="show-buttons">
+                        {show.tickets ? (
+                          <a href={show.tickets} target="_blank" rel="noopener noreferrer" className="show-btn-primary">Get Tickets</a>
+                        ) : (
+                          <a href={showMapsUrl(show)} target="_blank" rel="noopener noreferrer" className="show-btn-primary">Get Directions</a>
+                        )}
+                        <a href={showCalendarUrl(show)} target="_blank" rel="noopener noreferrer" className="show-btn-secondary">Add to Calendar</a>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </section>
+
+      <div className="home-divider"><div style={{ height: "1px", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)" }} /></div>
       {/* LIVE CONCERT FOOTAGE — vertical YouTube Short */}
       <section style={{
         padding: "50px 24px 40px",
@@ -439,33 +591,62 @@ export default function Home() {
         <div className="home-container">
           <div style={{ display: "flex", alignItems: "center", gap: "24px", marginBottom: "20px" }}>
             <div style={{ height: "1px", width: "56px", backgroundColor: "#d97706" }} />
-            <p style={label}>Published Work</p>
+            <p style={label}>Published Work &nbsp;·&nbsp; New Release</p>
           </div>
 
           <div className="book-grid">
             {/* LEFT — text */}
             <div>
               <h2 style={sectionHeading}>The Zen of<br /><strong style={{ fontWeight: 700 }}>Guitar</strong></h2>
-              <p className="mob-body-text" style={{ ...bodyText, fontSize: "21px", marginBottom: "20px" }}>Understanding Guitar Through Direct Intuition — Volume Three</p>
-              <p className="mob-body-text" style={{ ...bodyText, marginBottom: "48px" }}>A transformative guide that goes beyond technique to explore the mindset, philosophy, and artistry that separates good players from truly great ones.</p>
-              <a href="https://www.amazon.com/dp/B0DYRT81GQ" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Get It on Amazon</a>
+              <p className="mob-body-text" style={{ ...bodyText, fontSize: "21px", marginBottom: "20px" }}>Understanding Guitar Thru Direct Intuition — <span style={{ color: "#f59e0b", fontWeight: 400 }}>Volume Four</span></p>
+              <p className="mob-body-text" style={{ ...bodyText, marginBottom: "28px" }}>The most complete guide to the fretboard in the series. This full-color method ties chords, scales, arpeggios and modes into one clear picture of the neck. It is almost twice the size of Volume Three, with a new chapter on technique and expression, a new chapter of modal pentatonic scales and dozens of new lessons.</p>
+              <div className="book-facts">
+                {["Full-Color Paperback", "8.5 × 11 in", "134 Pages", "Available Now"].map((f) => (
+                  <span key={f} style={{ fontSize: "12px", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", fontFamily: font, fontWeight: 500 }}>{f}</span>
+                ))}
+              </div>
+              <a href="https://www.amazon.com/dp/B0HPDWZ9HX" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", backgroundColor: "#d97706", color: "#000", fontSize: "14px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "20px 56px", textDecoration: "none", fontFamily: font }}>Get It on Amazon</a>
             </div>
 
-            {/* RIGHT — book image, same 380px width as flyer */}
+            {/* RIGHT — book cover, same 380px width as flyer */}
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <a href="https://www.amazon.com/dp/B0DYRT81GQ" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.amazon.com/dp/B0HPDWZ9HX" target="_blank" rel="noopener noreferrer">
                 <img
-                  src="/zen.jpg"
-                  alt="The Zen of Guitar by Byron Nemeth"
+                  src="/zen4.jpg"
+                  alt="The Zen of Guitar, Volume Four by Byron Nemeth"
                   className="book-img"
                 />
               </a>
             </div>
           </div>
 
+          <blockquote className="book-quote">
+            <p style={{ fontFamily: "Georgia, serif", fontStyle: "italic", fontSize: "clamp(20px, 2.4vw, 26px)", lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: "0 0 14px" }}>
+              &ldquo;This book isn&rsquo;t about memorizing rules; it&rsquo;s about learning to listen to your ears, your instincts and the music that&rsquo;s already inside you. Trust what you hear, follow what you feel, and let the guitar take you somewhere new.&rdquo;
+            </p>
+            <p style={{ fontSize: "12px", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(245,158,11,0.85)", fontFamily: font, margin: 0 }}>From the book&rsquo;s welcome</p>
+          </blockquote>
+
+          <p style={label}>New in Volume Four</p>
+          <div className="book-features">
+            {[
+              { title: "Technique & Expression", desc: "Bending in tune, vibrato, legato, picking sequences and phrasing, plus a 12-bar blues solo study." },
+              { title: "Modal Pentatonics", desc: "Five-note portraits of all seven modes, each with a full-neck map and five connected blocks." },
+              { title: "Chords", desc: "The Nashville Number System in all twelve keys, triads and inversions, the CAGED system and the Magic Chord Accompaniment Guide." },
+              { title: "Scales & Arpeggios", desc: "Blues connection sequences, Phrygian Dominant to Hungarian Minor, and seventh-chord, tapping and sweep-picking arpeggios." },
+              { title: "Performance & Videography", desc: "A chord-by-chord study of “I Don’t Mind,” plus the stories behind the recordings and videos." },
+              { title: "The Complete Method", desc: "The core lessons of Volume Three are here too, from notation and the seven major modes to the Lydian Chromatic Concept." },
+            ].map((item) => (
+              <div key={item.title} style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "30px 32px" }}>
+                <h3 style={{ fontSize: "13px", letterSpacing: "0.25em", textTransform: "uppercase", color: "#f59e0b", marginBottom: "12px", fontFamily: font, fontWeight: 500 }}>{item.title}</h3>
+                <p className="mob-body-text" style={{ color: "rgba(255,255,255,0.75)", fontWeight: 300, lineHeight: 1.75, fontSize: "17px", fontFamily: font, margin: 0 }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
           {/* Full-width description below */}
-          <p className="mob-body-text" style={{ ...bodyText, fontSize: "19px", color: "rgba(255,255,255,0.72)", lineHeight: 1.9, marginTop: "8px" }}>
-            Volume Three is now released, building upon the foundation of Volumes One and Two with groundbreaking and transformative additions. This new volume introduces the revolutionary concept of the Color Association of the Root Note with any of the Seven Modes, offering a visually intuitive and intellectually stimulating approach to understanding and applying modes. By connecting color theory with music theory, this innovative perspective deepens the player's comprehension of modal relationships and enhances their intuitive grasp of the fretboard.
+          <p className="mob-body-text" style={{ ...bodyText, fontSize: "19px", color: "rgba(255,255,255,0.72)", lineHeight: 1.9 }}>
+            Every diagram speaks the same visual language, with red squares for roots, finger numbers, interval labels and color-coded blocks, so each page reads like a map of the neck. Almost every lesson ends with a practice line, and a new Weekly Practice Plan turns them into a focused 30-minute daily routine.
           </p>
         </div>
       </section>
